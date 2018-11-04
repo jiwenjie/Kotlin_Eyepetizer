@@ -4,7 +4,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
 /**
- * dev version
+ * author: Jiwenjie
+ * email: Jiwenjie97@gmail.com
  */
 class MainActivity : AppCompatActivity() {
 
@@ -13,3 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 }
+
+
+
+
