@@ -3,6 +3,9 @@ package com.example.root.kotlin_eyepetizer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
+/**
+ * dev version
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
