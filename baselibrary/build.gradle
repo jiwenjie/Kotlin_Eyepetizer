@@ -1,0 +1,79 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+final String SUPPORT_LIBS_VERSION = "28.0.0"
+final String CONSTRAINT_VERSION = "1.1.3"
+final String LIFECYCLE_COMMON_VERSION = "1.1.1"
+final String SMART_REFRESH_VERSION = "1.0.5.1"
+final String GSON_VERSION = "2.7"
+final String RX_JAVA_VERSION = "2.1.16"
+final String RX_ANDROID_VERSION = "2.0.2"
+final String RETROFIT_VERSION = "2.4.0"
+final String RETROFIT_CONVERTER_VERSION = "2.3.0"
+final String INTERCEPTOR_VERSION = "3.9.0"
+final String GLIDE_VERSION = "4.7.1"
+//final String KTX_VERSION = "1.0.0"
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+//    api "androidx.core:core-ktx:$KTX_VERSION"
+    api "com.android.support:appcompat-v7:$SUPPORT_LIBS_VERSION"
+    api "com.android.support:design:$SUPPORT_LIBS_VERSION"
+    api "com.android.support:recyclerview-v7:$SUPPORT_LIBS_VERSION"
+    api "com.android.support.constraint:constraint-layout:$CONSTRAINT_VERSION"
+    api "android.arch.lifecycle:common-java8:$LIFECYCLE_COMMON_VERSION"
+    api "android.arch.lifecycle:viewmodel:$LIFECYCLE_COMMON_VERSION"
+    api "android.arch.lifecycle:livedata:$LIFECYCLE_COMMON_VERSION"
+    api "android.arch.lifecycle:extensions:$LIFECYCLE_COMMON_VERSION"
+    api "com.scwang.smartrefresh:SmartRefreshLayout:$SMART_REFRESH_VERSION"
+    api "com.google.code.gson:gson:$GSON_VERSION"
+    api "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
+    api "io.reactivex.rxjava2:rxandroid:$RX_ANDROID_VERSION"
+    api "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    api "com.squareup.retrofit2:converter-gson:$RETROFIT_CONVERTER_VERSION"
+    api "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_CONVERTER_VERSION"
+    api "com.squareup.retrofit2:converter-scalars:$RETROFIT_CONVERTER_VERSION"
+    api "com.squareup.okhttp3:logging-interceptor:$INTERCEPTOR_VERSION"
+    api "com.github.bumptech.glide:glide:$GLIDE_VERSION"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+repositories {
+    mavenCentral()
+}
+
