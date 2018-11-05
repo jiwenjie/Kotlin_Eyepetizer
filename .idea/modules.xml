@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Kotlin_Eyepetizer.iml" filepath="$PROJECT_DIR$/Kotlin_Eyepetizer.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baselibrary/baselibrary.iml" filepath="$PROJECT_DIR$/baselibrary/baselibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/multiple_status_view/multiple_status_view.iml" filepath="$PROJECT_DIR$/multiple_status_view/multiple_status_view.iml" />
     </modules>
   </component>
 </project>
