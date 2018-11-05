@@ -10,9 +10,9 @@ import java.util.List;
  * version:1.0
  */
 public interface PermissionListener {
-    void onGranted();
+   void onGranted();
 
-    void onDenied(List<String> deniedPermissions);
+   void onDenied(List<String> deniedPermissions);
 }
 
 

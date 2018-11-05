@@ -3,6 +3,7 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.example.root.kotlin_eyepetizer">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
