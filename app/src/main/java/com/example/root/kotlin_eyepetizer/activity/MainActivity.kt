@@ -1,7 +1,8 @@
-package com.example.root.kotlin_eyepetizer
+package com.example.root.kotlin_eyepetizer.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.root.kotlin_eyepetizer.R
 
 /**
  * author: Jiwenjie

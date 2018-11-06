@@ -25,14 +25,13 @@ import java.util.List;
  * version:1.0
  */
 public abstract class BaseMvpActivity<V extends BaseMvpViewImpl, P extends BaseMvpPresenter<V>>
-        extends AppCompatActivity  {
+        extends AppCompatActivity {
 
     private static final int PERMISSION_REQUEST_CODE = 0X10000000;
     private PermissionListener permissionListener;
     protected P mPresenter;
 
     @TargetApi(21)
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +67,9 @@ public abstract class BaseMvpActivity<V extends BaseMvpViewImpl, P extends BaseM
 
     protected abstract P initPresenter();
 
-    protected boolean enableTransparentStatus() { return false; }
+    protected boolean enableTransparentStatus() {
+        return false;
+    }
 
     protected void setListener() {
 
@@ -125,29 +126,4 @@ public abstract class BaseMvpActivity<V extends BaseMvpViewImpl, P extends BaseM
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
