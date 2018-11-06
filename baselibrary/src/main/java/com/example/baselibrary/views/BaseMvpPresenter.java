@@ -24,7 +24,9 @@ public abstract class BaseMvpPresenter<V extends BaseMvpViewImpl>
      * 构造函数不添加 Model 实例
      * 需要在 View 中初始化 Presenter，如果添加 Model 实例，则 View Model 耦合
      */
-    public BaseMvpPresenter(V view) { this.mView = view; }
+    public BaseMvpPresenter(V view) {
+        this.mView = view;
+    }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     protected void onCreate() {
@@ -62,19 +64,5 @@ public abstract class BaseMvpPresenter<V extends BaseMvpViewImpl>
         Log.d(TAG, "onLifeChange: (" + owner + ", " + event + ")");
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

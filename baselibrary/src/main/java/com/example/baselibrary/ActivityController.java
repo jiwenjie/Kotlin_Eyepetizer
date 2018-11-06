@@ -14,48 +14,48 @@ import java.util.List;
  */
 public class ActivityController {
 
-   private static List<Activity> activities = new ArrayList<>();
+    private static List<Activity> activities = new ArrayList<>();
 
-   /**
-    * onCreate 调用
-    */
-   public static void addActivity(Activity activity) {
-      activities.add(activity);
-   }
+    /**
+     * onCreate 调用
+     */
+    public static void addActivity(Activity activity) {
+        activities.add(activity);
+    }
 
-   /**
-    * onDestroy 调用
-    */
-   public static void removeActivity(Activity activity) {
-      activities.remove(activity);
-      activity.finish();
-   }
+    /**
+     * onDestroy 调用
+     */
+    public static void removeActivity(Activity activity) {
+        activities.remove(activity);
+        activity.finish();
+    }
 
-   /**
-    * 获取栈顶 Activity
-    */
-   public static Activity getTopActivity() {
-      if (!activities.isEmpty()) {
-         return activities.get(activities.size() - 1);
-      } else {
-         return null;
-      }
-   }
+    /**
+     * 获取栈顶 Activity
+     */
+    public static Activity getTopActivity() {
+        if (!activities.isEmpty()) {
+            return activities.get(activities.size() - 1);
+        } else {
+            return null;
+        }
+    }
 
-   /**
-    * 关闭所有 Activity
-    */
-   public static void finishAllActivity() {
-      if (activities.isEmpty()) {
-         return;
-      }
+    /**
+     * 关闭所有 Activity
+     */
+    public static void finishAllActivity() {
+        if (activities.isEmpty()) {
+            return;
+        }
 
-      for (Activity activity : activities) {
-         if (!activity.isFinishing()) {
-            activity.finish();
-         }
-      }
-   }
+        for (Activity activity : activities) {
+            if (!activity.isFinishing()) {
+                activity.finish();
+            }
+        }
+    }
 }
 
 

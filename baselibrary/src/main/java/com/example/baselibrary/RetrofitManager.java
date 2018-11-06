@@ -21,57 +21,57 @@ import java.util.concurrent.TimeUnit;
  */
 public class RetrofitManager {
 
-   private static final String TAG = RetrofitManager.class.getSimpleName();
-   private static final int CONN_TIME = 5;
-   private static final int READ_TIME = 10;
-   private static final int WRITE_TIME = 30;
-   private static Retrofit mRetrofit;
-   /* 用于动态修改 url */
-   private static String url;
+    private static final String TAG = RetrofitManager.class.getSimpleName();
+    private static final int CONN_TIME = 5;
+    private static final int READ_TIME = 10;
+    private static final int WRITE_TIME = 30;
+    private static Retrofit mRetrofit;
+    /* 用于动态修改 url */
+    private static String url;
 
-   private RetrofitManager() {
+    private RetrofitManager() {
 
-   }
+    }
 
-   public static Retrofit provideClient(String baseUrl) {
-      if (!TextUtils.equals(url, baseUrl) && mRetrofit != null) {
-         mRetrofit = null;
-         url = baseUrl;
-      }
+    public static Retrofit provideClient(String baseUrl) {
+        if (!TextUtils.equals(url, baseUrl) && mRetrofit != null) {
+            mRetrofit = null;
+            url = baseUrl;
+        }
 
-      if (mRetrofit == null) {
-         synchronized (RetrofitManager.class) {
-            if (mRetrofit == null) {
-               mRetrofit = new Retrofit.Builder()
-                       .baseUrl(baseUrl)
-                       .client(genericOkClient())
-                       .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                       .addConverterFactory(GsonConverterFactory.create())
-                       .build();
+        if (mRetrofit == null) {
+            synchronized (RetrofitManager.class) {
+                if (mRetrofit == null) {
+                    mRetrofit = new Retrofit.Builder()
+                            .baseUrl(baseUrl)
+                            .client(genericOkClient())
+                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+                }
             }
-         }
-      }
-      return mRetrofit;
-   }
+        }
+        return mRetrofit;
+    }
 
-   /**
-    * 创建 OkHttpClient 实例
-    * <p>
-    * 头部信息通过 Retrofit Header 注解添加
-    */
-   private static OkHttpClient genericOkClient() {
-      HttpLoggingInterceptor loggingInterceptor
-              = new HttpLoggingInterceptor(
-              message -> Log.i(TAG, "Interceptor message =>" + message));
-      loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+    /**
+     * 创建 OkHttpClient 实例
+     * <p>
+     * 头部信息通过 Retrofit Header 注解添加
+     */
+    private static OkHttpClient genericOkClient() {
+        HttpLoggingInterceptor loggingInterceptor
+                = new HttpLoggingInterceptor(
+                message -> Log.i(TAG, "Interceptor message =>" + message));
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-      return new OkHttpClient.Builder()
-              .connectTimeout(CONN_TIME, TimeUnit.SECONDS)
-              .readTimeout(READ_TIME, TimeUnit.SECONDS)
-              .writeTimeout(WRITE_TIME, TimeUnit.SECONDS)
-              .addNetworkInterceptor(loggingInterceptor)
-              .build();
-   }
+        return new OkHttpClient.Builder()
+                .connectTimeout(CONN_TIME, TimeUnit.SECONDS)
+                .readTimeout(READ_TIME, TimeUnit.SECONDS)
+                .writeTimeout(WRITE_TIME, TimeUnit.SECONDS)
+                .addNetworkInterceptor(loggingInterceptor)
+                .build();
+    }
 }
 
 
