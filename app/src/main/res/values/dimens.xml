@@ -2,17 +2,33 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="padding_tab_layout_bottom">51dp</dimen>
 
+    <dimen name="common_5dp">5dp</dimen>
+    <dimen name="common_10dp">10dp</dimen>
+    <dimen name="common_15dp">15dp</dimen>
+    <dimen name="common_20dp">20dp</dimen>
+    <dimen name="common_25dp">25dp</dimen>
+    <dimen name="common_30dp">30dp</dimen>
+    <dimen name="common_35dp">35dp</dimen>
+    <dimen name="common_40dp">40dp</dimen>
+    <dimen name="common_45dp">45dp</dimen>
+    <dimen name="common_50dp">50dp</dimen>
+
+    <dimen name="common_16dp">16dp</dimen>
+    <dimen name="common_18dp">18dp</dimen>
+    <dimen name="common_24dp">24dp</dimen>
+
+    <dimen name="line">1px</dimen>
 
     <dimen name="padding_common">10dp</dimen>
     <dimen name="padding_common_h">15dp</dimen>
     <dimen name="padding_common_v">10dp</dimen>
     <dimen name="padding_common_d">5dp</dimen>
 
-    <dimen name="textSize_small_10">10sp</dimen>
-    <dimen name="textSize_small">12sp</dimen>
-    <dimen name="textSize_content">14sp</dimen>
-    <dimen name="textSize_titleSmall">16sp</dimen>
-    <dimen name="textSize_title">18sp</dimen>
+    <dimen name="common_sp_10">10sp</dimen>
+    <dimen name="common_sp_12">12sp</dimen>
+    <dimen name="common_sp_14">14sp</dimen>
+    <dimen name="common_sp_16">16sp</dimen>
+    <dimen name="common_sp_18">18sp</dimen>
 
     <dimen name="division_line">0.5dp</dimen>
 </resources>
