@@ -1,10 +1,8 @@
 package com.example.root.kotlin_eyepetizer.base
 
-import android.os.Bundle
 import android.view.View
 import com.example.baselibrary.views.BaseMvpFragment
 import com.example.baselibrary.views.BaseMvpPresenter
-import com.example.baselibrary.views.BaseMvpViewImpl
 import com.example.multiple_status_view.MultipleStatusView
 
 /**
