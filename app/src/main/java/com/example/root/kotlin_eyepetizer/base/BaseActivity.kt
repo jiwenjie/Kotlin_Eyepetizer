@@ -1,14 +1,11 @@
 package com.example.root.kotlin_eyepetizer.base
 
 import android.content.Context
-import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import com.example.baselibrary.views.BaseMvpActivity
 import com.example.baselibrary.views.BaseMvpPresenter
-import com.example.baselibrary.views.BaseMvpViewImpl
 import com.example.multiple_status_view.MultipleStatusView
 
 /**
@@ -19,7 +16,6 @@ import com.example.multiple_status_view.MultipleStatusView
  *  version:1.0
  */
 abstract class BaseActivity : BaseMvpActivity<IBaseView, BaseMvpPresenter<IBaseView>>() {
-
     /**
      * 多种状态的 View 的切换
      */
