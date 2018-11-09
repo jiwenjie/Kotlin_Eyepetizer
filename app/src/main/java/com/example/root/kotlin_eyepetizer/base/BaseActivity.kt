@@ -15,7 +15,7 @@ import com.example.multiple_status_view.MultipleStatusView
  *  desc: 复写 Activity 基类
  *  version:1.0
  */
-abstract class BaseActivity : BaseMvpActivity<IBaseView, BaseMvpPresenter<IBaseView>>() {
+abstract class BaseActivity<V, P> : BaseMvpActivity<IBaseView, BaseMvpPresenter<IBaseView>>() {
     /**
      * 多种状态的 View 的切换
      */
@@ -50,6 +50,10 @@ abstract class BaseActivity : BaseMvpActivity<IBaseView, BaseMvpPresenter<IBaseV
     fun closeKeyBoard(mEditText: EditText, mContext: Context) {
         val imm = mContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(mEditText.windowToken, 0)
+    }
+
+    override fun enableTransparentStatus(): Boolean {
+        return true
     }
 }
 

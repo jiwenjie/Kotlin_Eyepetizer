@@ -12,7 +12,7 @@ import com.example.multiple_status_view.MultipleStatusView
  *  desc:复写 Fragment 基类
  *  version:1.0
  */
-abstract class BaseFragment : BaseMvpFragment<IBaseView, BaseMvpPresenter<IBaseView>>() {
+abstract class BaseFragment<V, P> : BaseMvpFragment<IBaseView, BaseMvpPresenter<IBaseView>>() {
 
     /**
      * 多种状态的 View 切换
@@ -32,6 +32,7 @@ abstract class BaseFragment : BaseMvpFragment<IBaseView, BaseMvpPresenter<IBaseV
         super.setListener()
         mLayoutStatusView?.setOnClickListener(mRetryClickListener)
     }
+
 }
 
 
