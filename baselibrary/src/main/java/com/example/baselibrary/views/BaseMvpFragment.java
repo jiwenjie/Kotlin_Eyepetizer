@@ -17,35 +17,35 @@ import android.view.ViewGroup;
  */
 public abstract class BaseMvpFragment<V extends BaseMvpViewImpl, P extends BaseMvpPresenter<V>> extends Fragment {
 
-    protected View mRootView;
-    protected P mPresenter;
+   protected View mRootView;
+   protected P mPresenter;
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mRootView = inflater.inflate(getLayoutId(), container, false);
-        return mRootView;
-    }
+   @Nullable
+   @Override
+   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+      mRootView = inflater.inflate(getLayoutId(), container, false);
+      return mRootView;
+   }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mPresenter = initPresenter();
-        /* 注册 lifecycle */
-        getLifecycle().addObserver(mPresenter);
-        initFragment(savedInstanceState);
-        setListener();
-    }
+   @Override
+   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+      super.onViewCreated(view, savedInstanceState);
+      mPresenter = initPresenter();
+      /* 注册 lifecycle */
+      if (mPresenter != null) getLifecycle().addObserver(mPresenter);
+      initFragment(savedInstanceState);
+      setListener();
+   }
 
-    protected abstract int getLayoutId();
+   protected abstract int getLayoutId();
 
-    protected abstract void initFragment(Bundle savedInstanceState);
+   protected abstract void initFragment(Bundle savedInstanceState);
 
-    protected abstract P initPresenter();
+   protected abstract P initPresenter();
 
-    protected void setListener() {
+   protected void setListener() {
 
-    }
+   }
 }
 
 

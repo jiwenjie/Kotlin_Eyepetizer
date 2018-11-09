@@ -15,9 +15,11 @@
 
     <dimen name="common_16dp">16dp</dimen>
     <dimen name="common_18dp">18dp</dimen>
+    <dimen name="common_23dp">23dp</dimen>
     <dimen name="common_24dp">24dp</dimen>
 
-    <dimen name="line">1px</dimen>
+    <dimen name="line_1px">1px</dimen>
+    <dimen name="line_1dp">1dp</dimen>
 
     <dimen name="padding_common">10dp</dimen>
     <dimen name="padding_common_h">15dp</dimen>

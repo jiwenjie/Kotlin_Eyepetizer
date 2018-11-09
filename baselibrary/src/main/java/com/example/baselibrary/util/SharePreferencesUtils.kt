@@ -1,6 +1,6 @@
 @file:Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 
-package com.example.baselibrary.utils
+package com.example.baselibrary.util
 
 import android.content.Context
 import androidx.core.content.edit

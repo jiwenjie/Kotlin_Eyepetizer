@@ -31,18 +31,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_splash_eye" />
 
-    <com.example.root.kotlin_eyepetizer.custome.SplashTextView_Chinese
-        android:id="@+id/spltv_chinese"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/common_10dp"
-        android:text="@string/splash_textView"
-        android:textColor="@color/color_white"
-        android:textSize="@dimen/common_sp_18"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/stv_english" />
-
     <com.example.root.kotlin_eyepetizer.custome.SplashTextView
         android:id="@+id/spl_slogn"
         android:layout_width="wrap_content"

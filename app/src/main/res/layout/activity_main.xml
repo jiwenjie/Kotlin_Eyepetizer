@@ -6,13 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
-    <TextView
+
+    <FrameLayout
+        android:id="@+id/fl_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <TextView
+    <View
+        android:id="@+id/division_line"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="@dimen/division_line"
+        android:background="@color/color_gray"
+        app:layout_constraintBottom_toTopOf="@id/main_blurView" />
+
+    <!--模糊透明的 View 效果-->
+    <com.github.mmin18.widget.RealtimeBlurView
+        android:id="@+id/main_blurView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_50dp"
+        android:background="@color/color_title_bg"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_50dp"
+        android:background="@color/color_translucent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:tl_divider_color="@color/color_black"
+        app:tl_iconHeight="@dimen/common_23dp"
+        app:tl_iconWidth="@dimen/common_23dp"
+        app:tl_indicator_color="@color/colorPrimary"
+        app:tl_indicator_height="0dp"
+        app:tl_textSelectColor="@color/color_black"
+        app:tl_textUnselectColor="@color/color_gray"
+        app:tl_textsize="@dimen/common_sp_10"
+        app:tl_underline_color="#DDDDDD"
+        app:tl_underline_height="@dimen/line_1dp" />
 
 </android.support.constraint.ConstraintLayout>
 
