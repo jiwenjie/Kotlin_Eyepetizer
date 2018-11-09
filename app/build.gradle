@@ -36,17 +36,17 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    productFlavors {
-
-    }
-
-    dexOptions {
-        jumboMode true
-    }
-
-    lintOptions {
-        abortOnError false
-    }
+//    productFlavors {
+//
+//    }
+//
+//    dexOptions {
+//        jumboMode true
+//    }
+//
+//    lintOptions {
+//        abortOnError false
+//    }
 }
 
 dependencies {
@@ -78,6 +78,8 @@ dependencies {
 
     implementation project(':baselibrary')
     implementation project(':multiple_status_view')
+
+    implementation project(':test')
 }
 
 repositories {

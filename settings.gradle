@@ -1,1 +1,1 @@
-include ':app', ':baselibrary', ':multiple_status_view'
+include ':app', ':baselibrary', ':multiple_status_view', ':test'

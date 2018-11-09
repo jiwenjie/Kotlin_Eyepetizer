@@ -1,4 +1,6 @@
-package com.example.baselibrary.util
+@file:Suppress("DEPRECATION")
+
+package com.example.baselibrary.utils
 
 import android.app.Activity
 import android.content.Context

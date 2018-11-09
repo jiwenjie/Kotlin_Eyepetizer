@@ -6,6 +6,7 @@ import android.view.KeyEvent
 import android.widget.Toast
 //import com.example.baselibrary.util.ToastUtils
 import com.example.baselibrary.views.BaseMvpPresenter
+import com.example.root.kotlin_eyepetizer.App
 import com.example.root.kotlin_eyepetizer.R
 import com.example.root.kotlin_eyepetizer.base.BaseActivity
 import com.example.root.kotlin_eyepetizer.base.IBaseView
@@ -110,7 +111,6 @@ class MainActivity : BaseActivity<IBaseView, BaseMvpPresenter<IBaseView>>() {
         mIndex = position
         tab_layout.currentTab = mIndex
         transition.commitAllowingStateLoss()
-
     }
 
     /**
@@ -148,7 +148,8 @@ class MainActivity : BaseActivity<IBaseView, BaseMvpPresenter<IBaseView>>() {
                 finish()
             } else {
                 mExitTime = System.currentTimeMillis()
-                Toast.makeText(applicationContext, "再按一次退出程序", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(applicationContext, "再按一次退出程序", Toast.LENGTH_SHORT).show()
+//                ToastUtils.showToast(App.INSTANCE!!.applicationContext, "再按一次退出程序", Toast.LENGTH_SHORT)
 //                ToastUtils.showCenterToast(applicationContext, "再按一次退出程序", Toast.LENGTH_SHORT)
             }
             return true
