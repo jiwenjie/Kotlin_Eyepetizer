@@ -1,17 +1,11 @@
-package com.example.baselibrary.util
+package com.example.baselibrary.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.Gravity
 import android.widget.Toast
 
-/**
- *  author:Jiwenjie
- *  email:278630464@qq.com
- *  time:2018/11/04
- *  desc:
- *  version:1.0
- */
+
 object ToastUtils {
     private var mToast: Toast? = null
 
@@ -42,7 +36,6 @@ object ToastUtils {
             mToast = null
         }
     }
-
 }
 
 

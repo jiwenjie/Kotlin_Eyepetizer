@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/iv_cover_feed"
+        android:scaleType="fitXY"
+        android:src="@drawable/placeholder_banner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/iv_avatar"
+        app:layout_constraintTop_toBottomOf="@id/iv_cover_feed"
+        android:layout_marginTop="@dimen/common_10dp"
+        android:layout_marginBottom="@dimen/common_10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/common_15dp"
+        android:src="@mipmap/ic_launcher_round"
+        android:layout_width="@dimen/common_40dp"
+        android:layout_height="@dimen/common_40dp"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/iv_cover_feed"
+        tools:text="我正在用 Kotlin 写 Android"
+        android:singleLine="true"
+        android:layout_marginStart="@dimen/common_15dp"
+        app:layout_constraintStart_toEndOf="@id/iv_avatar"
+        android:layout_marginTop="@dimen/common_10dp"
+        android:textColor="@color/color_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_tag"
+        tools:text="a/b/c/03~1586"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_constraintStart_toEndOf="@id/iv_avatar"
+        android:layout_marginStart="@dimen/common_15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_category"
+        tools:text="#搞笑"
+        app:layout_constraintTop_toBottomOf="@id/iv_cover_feed"
+        android:layout_marginTop="@dimen/common_25dp"
+        android:layout_marginEnd="@dimen/common_15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/v_line"
+        android:background="@color/color_darker_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_avatar"
+        android:layout_marginTop="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/division_line" />
+
+</android.support.constraint.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,7 +10,7 @@ import com.example.root.kotlin_eyepetizer.base.IBaseView
  *  author:Jiwenjie
  *  email:278630464@qq.com
  *  time:2018/11/07
- *  desc:
+ *  desc: 发现，和热门首页是同样的布局
  *  version:1.0
  */
 class DiscoveryFragment : BaseFragment<IBaseView, BaseMvpPresenter<IBaseView>>() {

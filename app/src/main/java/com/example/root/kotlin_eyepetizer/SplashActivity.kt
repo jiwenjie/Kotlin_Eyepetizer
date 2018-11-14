@@ -19,44 +19,46 @@ import kotlinx.android.synthetic.main.activity_splash.*
  */
 class SplashActivity : AppCompatActivity() {
 
-   private lateinit var objAlphaIv: ObjectAnimator
-   private lateinit var objAlphaTv: ObjectAnimator
+    private lateinit var objAlphaIv: ObjectAnimator
+//   private lateinit var objAlphaTv: ObjectAnimator
 
-   private lateinit var objScaleXIv: ObjectAnimator
-   private lateinit var objScaleYIv: ObjectAnimator
-   private lateinit var objScaleXTv: ObjectAnimator
-   private lateinit var objScaleYTv: ObjectAnimator
+    private lateinit var objScaleXIv: ObjectAnimator
+    private lateinit var objScaleYIv: ObjectAnimator
+//   private lateinit var objScaleXTv: ObjectAnimator
+//   private lateinit var objScaleYTv: ObjectAnimator
 
-   @SuppressLint("PrivateResource")
-   override fun onCreate(savedInstanceState: Bundle?) {
-      super.onCreate(savedInstanceState)
-      setContentView(R.layout.activity_splash)
+    @SuppressLint("PrivateResource")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_splash)
 
-      /**
-       * 注意这里要在 0 和 1 后面加 f，加 f
-       * 此处为 透明动画
-       */
-      objAlphaIv = ObjectAnimator.ofFloat(iv_splash_eye, "alpha", 0f, 1f)
-      objAlphaTv = ObjectAnimator.ofFloat(stv_english, "alpha", 0f, 1f)
+        /**
+         * 注意这里要在 0 和 1 后面加 f，加 f
+         * 此处为 透明动画
+         */
+        objAlphaIv = ObjectAnimator.ofFloat(iv_splash_eye, "alpha", 0f, 1f)
+//      objAlphaTv = ObjectAnimator.ofFloat(stv_english, "alpha", 0f, 1f)
 
-      /**
-       * 缩放动画
-       */
-      objScaleXIv = ObjectAnimator.ofFloat(iv_splash_eye, "scaleX", 0f, 1f)
-      objScaleYIv = ObjectAnimator.ofFloat(iv_splash_eye, "scaleY", 0f, 1f)
-      objScaleXTv = ObjectAnimator.ofFloat(stv_english, "scaleX", 0f, 1f)
-      objScaleYTv = ObjectAnimator.ofFloat(stv_english, "scaleY", 0f, 1f)
-      val animationSet = AnimatorSet()
-      animationSet.playTogether(objScaleXIv, objScaleYIv, objScaleXTv, objScaleYTv, objAlphaIv, objAlphaTv)
-      animationSet.duration = 2400
-      animationSet.start()
+        /**
+         * 缩放动画
+         */
+        objScaleXIv = ObjectAnimator.ofFloat(iv_splash_eye, "scaleX", 0f, 1f)
+        objScaleYIv = ObjectAnimator.ofFloat(iv_splash_eye, "scaleY", 0f, 1f)
+//      objScaleXTv = ObjectAnimator.ofFloat(stv_english, "scaleX", 0f, 1f)
+//      objScaleYTv = ObjectAnimator.ofFloat(stv_english, "scaleY", 0f, 1f)
+        val animationSet = AnimatorSet()
+//      animationSet.playTogether(objScaleXIv, objScaleYIv, objScaleXTv, objScaleYTv, objAlphaIv, objAlphaTv)
+        animationSet.playTogether(objScaleXIv, objScaleYIv, objAlphaIv)
 
-      Handler().postDelayed({
-         val intent = Intent(this, MainActivity::class.java)
-         startActivity(intent)
-         finish()
-         overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
-      }, 4000)
+        animationSet.duration = 2400
+        animationSet.start()
 
-   }
+        Handler().postDelayed({
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+            overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
+        }, 4000)
+
+    }
 }

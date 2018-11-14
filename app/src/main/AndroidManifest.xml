@@ -31,8 +31,8 @@
         <!--设置 SplashActivity 为第一个 Activity -->
         <activity
             android:name=".SplashActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar.FullScreen">
+            android:screenOrientation="portrait">
+            <!--android:theme="@style/AppTheme.NoActionBar.FullScreen">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,7 +44,9 @@
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".test.TestActivity" />
+        <!--测试专用-->
+        <!--<activity android:name=".test.TestActivity" />-->
+        <!--<activity android:name=".test.TestKotlinActivity" />-->
 
     </application>
 </manifest>

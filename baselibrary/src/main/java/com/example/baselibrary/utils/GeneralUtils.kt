@@ -1,4 +1,4 @@
-package com.example.baselibrary.util
+package com.example.baselibrary.utils
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi

@@ -8,7 +8,6 @@ import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 
 /**
  *  author:Jiwenjie
@@ -22,7 +21,7 @@ abstract class BaseHeaderFooterRecyclerAdapter<T: Any>(context: Context,
         RecyclerView.Adapter<BaseHeaderFooterRecyclerAdapter.BaseHolder>() {
 
     protected val mContext = context
-    private var mData = data
+    var mData = data
     private val mInflater: LayoutInflater
     private val footers = SparseArray<View>()
     private val headers = SparseArray<View>()
@@ -55,12 +54,16 @@ abstract class BaseHeaderFooterRecyclerAdapter<T: Any>(context: Context,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder {
-        return if (hasHeader() && headers.get(viewType) != null) BaseHolder(headers.get(viewType))
-        else if (hasFooter() && footers.get(viewType) != null) BaseHolder(footers.get(viewType))
+        return if (hasHeader() && headers.get(viewType) != null)
+            BaseHolder(headers.get(viewType))
+        else if (hasFooter() && footers.get(viewType) != null)
+            BaseHolder(footers.get(viewType))
         else BaseHolder(mInflater.inflate(getAdapterResId(), parent, false))
     }
 
-    abstract fun getAdapterResId(): Int
+    protected open fun getAdapterResId(): Int {
+        return -1
+    }
 
     override fun getItemCount(): Int = getHeaderSize() + getDataSize() + getFooterSize()
 
