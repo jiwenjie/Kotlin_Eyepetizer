@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.multiple_status_view.MultipleStatusView;
 
 /**
  * author:Jiwenjie
@@ -44,8 +45,22 @@ public abstract class BaseMvpFragment<V extends BaseMvpViewImpl, P extends BaseM
    protected abstract P initPresenter();
 
    protected void setListener() {
-
+      mRetryClickListener listener = v -> loadData();
+      mLayoutStatusView.setOnRetryClickListener(listener);
    }
+
+   /**
+    * 多种状态的 View 切换
+    */
+   protected MultipleStatusView mLayoutStatusView;
+
+   private interface mRetryClickListener extends View.OnClickListener { }
+
+   /**
+    * 加载数据
+    */
+   protected abstract void loadData();
+
 }
 
 

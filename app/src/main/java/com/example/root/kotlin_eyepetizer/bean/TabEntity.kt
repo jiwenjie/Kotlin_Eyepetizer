@@ -1,4 +1,4 @@
-package com.example.root.kotlin_eyepetizer.base
+package com.example.root.kotlin_eyepetizer.bean
 
 import com.flyco.tablayout.listener.CustomTabEntity
 

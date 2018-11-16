@@ -11,12 +11,11 @@ import java.io.Serializable
  */
 data class CategoryBean(val id: Long,
                         val name: String,
-                        val alias: Any,
                         val description: String,
                         val bgPicture: String,
                         val bgColor: String,
-                        val headerImage: String,
-                        val defaultAuthorId: Long) : Serializable
+                        val headerImage: String) : Serializable
+
 
 
 

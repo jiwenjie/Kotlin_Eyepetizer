@@ -3,7 +3,7 @@ package com.example.root.kotlin_eyepetizer.adapter
 import android.content.Context
 import android.view.View
 import com.example.baselibrary.adapter.BaseHeaderFooterRecyclerAdapter
-import com.example.root.kotlin_eyepetizer.bean.IndexBean
+import com.example.root.kotlin_eyepetizer.bean.HomeBean
 
 /**
  *  author:Jiwenjie
@@ -12,7 +12,7 @@ import com.example.root.kotlin_eyepetizer.bean.IndexBean
  *  desc: 首页数据的适配器
  *  version:1.0
  */
-class IndexAdapter(mContext: Context, beanList: ArrayList<IndexBean.Issue.Item>) : BaseHeaderFooterRecyclerAdapter<IndexBean.Issue.Item>(mContext, beanList) {
+class HomeAdapter(mContext: Context, beanList: ArrayList<HomeBean.Issue.Item>) : BaseHeaderFooterRecyclerAdapter<HomeBean.Issue.Item>(mContext, beanList) {
 
     // banner 作为 RecyclerView 的第一项
     var bannerItemSize = 0
@@ -41,7 +41,7 @@ class IndexAdapter(mContext: Context, beanList: ArrayList<IndexBean.Issue.Item>)
 
 
 
-    override fun convertView(itemView: View?, data: IndexBean.Issue.Item) {
+    override fun convertView(itemView: View?, data: HomeBean.Issue.Item) {
 
     }
 
