@@ -1,4 +1,4 @@
-package com.example.root.kotlin_eyepetizer.base
+package com.example.root.kotlin_eyepetizer.bean
 
 import com.flyco.tablayout.listener.CustomTabEntity
 
@@ -9,7 +9,9 @@ import com.flyco.tablayout.listener.CustomTabEntity
  *  desc:
  *  version:1.0
  */
-class TabEntity(var title: String, private var selectedIcon: Int, private var unSelectedIcon: Int): CustomTabEntity {
+class TabEntity(var title: String,
+                private var selectedIcon: Int,
+                private var unSelectedIcon: Int): CustomTabEntity {
 
     override fun getTabUnselectedIcon(): Int {
         return unSelectedIcon

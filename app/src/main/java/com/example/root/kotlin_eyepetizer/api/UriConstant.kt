@@ -9,4 +9,5 @@ package com.example.root.kotlin_eyepetizer.api
  */
 object UriConstant {
     const val BASE_URL = "http://baobab.kaiyanapp.com/api/"
+    const val GitHub_URL = "https://github.com/jiwenjie/Kotlin_Eyepetizer"
 }

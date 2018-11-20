@@ -48,5 +48,20 @@
         <!--<activity android:name=".test.TestActivity" />-->
         <!--<activity android:name=".test.TestKotlinActivity" />-->
 
+        <!--关于-->
+        <activity
+            android:name=".activity.AboutActivity"
+            android:screenOrientation="portrait" />
+
+        <!--我的主页-->
+        <activity
+            android:name=".activity.ProfileHomePageActivity"
+            android:screenOrientation="portrait" />
+
+        <!--观看记录-->
+        <activity
+            android:name=".activity.WatchHistoryActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 </manifest>

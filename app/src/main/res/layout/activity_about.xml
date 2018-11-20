@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/about_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color_title_bg"
+        app:navigationIcon="?attr/homeAsUpIndicator">
+
+        <TextView
+            android:id="@+id/about_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/about"
+            android:textColor="@color/color_item_title"
+            android:textSize="@dimen/common_sp_18"
+            android:textStyle="bold" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/about_iv_logo"
+        android:layout_width="@dimen/image_width_100dp"
+        android:layout_height="@dimen/image_height_100dp"
+        android:layout_marginTop="@dimen/common_30dp"
+        android:src="@mipmap/web_hi_res_512"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/about_toolbar" />
+
+    <TextView
+        android:id="@+id/about_tv_appName"
+        style="@style/AppTheme.Label"
+        android:text="@string/app_name"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/common_sp_18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/about_iv_logo" />
+
+    <TextView
+        android:id="@+id/about_tv_versionName"
+        style="@style/AppTheme.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/about_tv_appName"
+        tools:text="V 1.0.0" />
+
+    <LinearLayout
+        android:id="@+id/about_twoLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/common_10dp"
+        android:background="@color/color_title_bg"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/about_tv_versionName">
+
+        <RelativeLayout
+            android:id="@+id/relayout_gitHub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding_common_h"
+            android:paddingEnd="@dimen/padding_common_h">
+
+            <TextView
+                style="@style/AppTheme.Label"
+                android:layout_centerVertical="true"
+                android:paddingTop="@dimen/padding_common"
+                android:paddingBottom="@dimen/padding_common"
+                android:text="@string/gitHub"
+                android:textColor="@color/color_black" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_action_more_black" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/color_division_line" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding_common_h"
+            android:paddingEnd="@dimen/padding_common_h">
+
+            <TextView
+                style="@style/AppTheme.Label"
+                android:layout_centerVertical="true"
+                android:paddingTop="@dimen/padding_common"
+                android:paddingBottom="@dimen/padding_common"
+                android:text="@string/feedback"
+                android:textColor="@color/color_black" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_action_more_black" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!--<TextView-->
+        <!--android:id="@+id/about_other"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="120dp"-->
+        <!--android:gravity="center"-->
+        <!--android:text="@string/copy_right_notice"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@id/about_twoLine"-->
+        <!--app:layout_constraintVertical_bias="0.2" />-->
+
+    <TextView
+        android:id="@+id/about_tv_notUseCommercial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/not_use_commercial"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/about_twoLine"
+        app:layout_constraintVertical_bias="0.7" />
+
+    <TextView
+        android:id="@+id/tv_since"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/common_50dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="@string/since"
+        android:textColor="@color/color_gray"
+        android:textSize="@dimen/common_sp_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/about_tv_notUseCommercial"/>
+
+</android.support.constraint.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

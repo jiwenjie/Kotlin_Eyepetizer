@@ -3,14 +3,12 @@ package com.example.root.kotlin_eyepetizer.activity
 import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
 import android.view.KeyEvent
-import android.widget.Toast
 //import com.example.baselibrary.util.ToastUtils
 import com.example.baselibrary.views.BaseMvpPresenter
-import com.example.root.kotlin_eyepetizer.App
 import com.example.root.kotlin_eyepetizer.R
 import com.example.root.kotlin_eyepetizer.base.BaseActivity
 import com.example.root.kotlin_eyepetizer.base.IBaseView
-import com.example.root.kotlin_eyepetizer.base.TabEntity
+import com.example.root.kotlin_eyepetizer.bean.TabEntity
 import com.example.root.kotlin_eyepetizer.fragment.DiscoveryFragment
 import com.example.root.kotlin_eyepetizer.fragment.HotFragment
 import com.example.root.kotlin_eyepetizer.fragment.IndexFragment
@@ -63,7 +61,8 @@ class MainActivity : BaseActivity<IBaseView, BaseMvpPresenter<IBaseView>>() {
     private fun initTab() {
         (0 until mTitles.size).mapTo(mTabEntities) {
             // 映射转换类型，转换成 mapTo 括号中的类型
-            TabEntity(mTitles[it], mIconSelected[it], mIconUnSelected[it]) }
+           TabEntity(mTitles[it], mIconSelected[it], mIconUnSelected[it])
+        }
         // 给 tab 赋值
         tab_layout.setTabData(mTabEntities)
         tab_layout.setOnTabSelectListener(object : OnTabSelectListener {

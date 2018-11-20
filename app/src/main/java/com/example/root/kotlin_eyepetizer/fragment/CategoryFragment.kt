@@ -9,17 +9,17 @@ import com.example.root.kotlin_eyepetizer.base.IBaseView
 /**
  *  author:Jiwenjie
  *  email:278630464@qq.com
- *  time:2018/11/07
- *  desc:
+ *  time:2018/11/14
+ *  desc: 分类的 Activity
  *  version:1.0
  */
-class IndexFragment : BaseMvpFragment<IBaseView, BaseMvpPresenter<IBaseView>>() {
+class CategoryFragment : BaseMvpFragment<IBaseView, BaseMvpPresenter<IBaseView>>() {
 
    private var mTitle: String? = null
 
    companion object {
-      fun getInstance(title: String): IndexFragment {
-         val fragment = IndexFragment()
+      fun getInstance(title: String): CategoryFragment {
+         val fragment = CategoryFragment()
          val bundle = Bundle()
          fragment.arguments = bundle
          fragment.mTitle = title
@@ -27,19 +27,18 @@ class IndexFragment : BaseMvpFragment<IBaseView, BaseMvpPresenter<IBaseView>>() 
       }
    }
 
-   override fun loadData() {
-
+   override fun initPresenter(): BaseMvpPresenter<IBaseView>? {
+      return null
    }
 
-   override fun getLayoutId(): Int {
-      return R.layout.fragment_index
-   }
+   override fun getLayoutId(): Int = R.layout.fragment_category
 
    override fun initFragment(savedInstanceState: Bundle?) {
 
    }
 
-   override fun initPresenter(): BaseMvpPresenter<IBaseView>? {
-      return null
+   override fun loadData() {
+
    }
+
 }

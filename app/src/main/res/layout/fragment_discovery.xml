@@ -31,6 +31,9 @@
         android:layout_width="match_parent"
         android:background="@color/color_title_bg"
         android:layout_height="@dimen/common_40dp"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        app:tabIndicatorFullWidth="true"
         app:tabMinWidth="100dp"
         app:tabIndicatorColor="#000"
         app:tabIndicatorHeight="2dp"
@@ -55,9 +58,27 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/backgroundColor"
         android:layout_width="match_parent"
-        app:layout_constraintVertical_weight="1">
+        app:layout_constraintVertical_weight="1"
+        app:emptyView="@layout/layout_empty_view"
+        app:errorView="@layout/layout_error_view"
+        app:loadingView="@layout/layout_loading_view"
+        app:noNetworkView="@layout/layout_network_view">
 
-
+        <android.support.v4.view.ViewPager
+            android:id="@+id/mViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </com.example.multiple_status_view.MultipleStatusView>
-
 </android.support.constraint.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+

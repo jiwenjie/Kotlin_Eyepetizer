@@ -11,18 +11,68 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <!--<item name="android:windowTranslucentStatus">true</item>-->
-        <!--<item name="android:windowTranslucentNavigation">true</item>-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
     <style name="AppTheme.NoActionBar.FullScreen">
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="AppTheme.Label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/common_sp_14</item>
+        <item name="android:textColor">@color/color_gray</item>
+    </style>
+
+    <style name="AppTheme.Label.Title">
+        <item name="android:textColor">@color/color_black</item>
+        <item name="android:textSize">@dimen/common_sp_16</item>
+    </style>
+
+    <style name="AppTheme.Label.Description">
+        <item name="android:gravity">top</item>
+        <item name="android:lineSpacingExtra">@dimen/common_5dp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">@dimen/common_sp_14</item>
+        <item name="android:singleLine">false</item>
+    </style>
 
     <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+    <style name="AppTheme.Label.Layout">
+        <item name="android:paddingTop">@dimen/padding_common_v</item>
+        <item name="android:paddingBottom">@dimen/padding_common_v</item>
+        <item name="android:paddingStart">@dimen/padding_common_h</item>
+        <item name="android:paddingEnd">@dimen/padding_common_h</item>
+    </style>
+
+    <style name="AppTheme.DiverLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:dividerHeight">0.5dp</item>
+        <item name="android:divider">@color/color_division_line</item>
+        <item name="android:background">@color/color_division_line</item>
+    </style>
+
+    <!--公共的 Text 样式设置-->
+    <style name="fragmentMine_commonTextStyle">
+        <item name="android:gravity">center|center_horizontal</item>
+        <item name="android:layout_height">@dimen/common_50dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">@dimen/common_sp_14</item>
+    </style>
+
+    <!--约束布局有关左右部分的设置-->
+    <!--<style name="ConstraintSet_start_and_end">-->
+        <!--<item name="app:layout_constraintEnd_toEndOf">parent</item>-->
+        <!--<item name="app:layout_constraintStart_toStartOf">parent</item>-->
+    <!--</style>-->
 
 </resources>
