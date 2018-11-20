@@ -60,6 +60,7 @@ dependencies {
     api "com.squareup.retrofit2:converter-scalars:$RETROFIT_CONVERTER_VERSION"
     api "com.squareup.okhttp3:logging-interceptor:$INTERCEPTOR_VERSION"
     api "com.github.bumptech.glide:glide:$GLIDE_VERSION"
+    annotationProcessor "com.github.bumptech.glide:compiler:$GLIDE_VERSION"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation project(':multiple_status_view')
 }

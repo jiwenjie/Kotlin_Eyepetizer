@@ -1,10 +1,16 @@
 package com.example.root.kotlin_eyepetizer.adapter
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.baselibrary.adapter.BaseHeaderFooterRecyclerAdapter
 import com.example.root.kotlin_eyepetizer.R
 import com.example.root.kotlin_eyepetizer.bean.HomeBean
+import com.example.root.kotlin_eyepetizer.glide.RequestOptions
 import kotlinx.android.synthetic.main.item_follow.view.*
 
 /**
@@ -20,6 +26,7 @@ class FollowAdapter(context: Context) : BaseHeaderFooterRecyclerAdapter<HomeBean
         return R.layout.item_follow
     }
 
+    @SuppressLint("CheckResult")
     override fun convertView(itemView: View?, data: HomeBean.Issue.Item) {
         val headerData = data.data?.header
         /**
@@ -27,9 +34,15 @@ class FollowAdapter(context: Context) : BaseHeaderFooterRecyclerAdapter<HomeBean
          */
         itemView!!.tv_title.text = headerData?.title
         itemView.tv_desc.text = headerData?.description
-//        Glide.with(mContext)
-//                .load(headerData?.icon)
-//                .transition(DrawableTransformation().crossFade)
+
+        Glide.with(mContext)
+            .load(headerData?.icon)
+            .apply(RequestOptions.getRequestOptions())
+            .transition(DrawableTransitionOptions().crossFade())
+            .into(itemView.iv_avatar)
+
+        itemView.fl_recyclerView.layoutManager = LinearLayoutManager(mContext as Activity, LinearLayoutManager.HORIZONTAL, false)
+        itemView.fl_recyclerView.adapter = FollowHorizontalAdapter(mContext, data.data!!.itemList)
     }
 }
 

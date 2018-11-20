@@ -35,6 +35,7 @@ public abstract class BaseMvpFragment<V extends BaseMvpViewImpl, P extends BaseM
       /* 注册 lifecycle */
       if (mPresenter != null) getLifecycle().addObserver(mPresenter);
       initFragment(savedInstanceState);
+      loadData();
       setListener();
    }
 
@@ -46,7 +47,7 @@ public abstract class BaseMvpFragment<V extends BaseMvpViewImpl, P extends BaseM
 
    protected void setListener() {
       mRetryClickListener listener = v -> loadData();
-      mLayoutStatusView.setOnRetryClickListener(listener);
+      if (mLayoutStatusView != null) mLayoutStatusView.setOnRetryClickListener(listener);
    }
 
    /**

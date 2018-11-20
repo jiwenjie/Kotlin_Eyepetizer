@@ -3,9 +3,9 @@ package com.example.root.kotlin_eyepetizer.fragment
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.example.baselibrary.adapter.BaseFragmentPagerAdapter
+import com.example.baselibrary.views.BaseMvpFragment
 import com.example.baselibrary.views.BaseMvpPresenter
 import com.example.root.kotlin_eyepetizer.R
-import com.example.root.kotlin_eyepetizer.base.BaseFragment
 import com.example.root.kotlin_eyepetizer.base.IBaseView
 import com.example.root.kotlin_eyepetizer.utils.StatusBarUtil
 import com.example.root.kotlin_eyepetizer.utils.TabLayoutHelper
@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_discovery.*
  *  desc: 发现，和热门首页是同样的布局
  *  version:1.0
  */
-class DiscoveryFragment : BaseFragment<IBaseView, BaseMvpPresenter<IBaseView>>() {
+class DiscoveryFragment : BaseMvpFragment<IBaseView, BaseMvpPresenter<IBaseView>>() {
 
    private val tabList = ArrayList<String>()
    private val fragments = ArrayList<Fragment>()
@@ -44,6 +44,7 @@ class DiscoveryFragment : BaseFragment<IBaseView, BaseMvpPresenter<IBaseView>>()
 
    override fun initFragment(savedInstanceState: Bundle?) {
       // 状态栏的部分设置
+      activity?.let { StatusBarUtil.darkMode(it) }
       activity?.let { StatusBarUtil.setPaddingSmart(it, fragment_discovery_toolbar) }
 
       mHeaderTitle.text = mTitle

@@ -1,19 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_mine"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mine_toolBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="我的"
-        android:textSize="@dimen/common_25dp"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/mine_iv_about"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/common_15dp"
+            android:src="@mipmap/ic_about"
+            tools:ignore="ContentDescription" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <com.example.root.kotlin_eyepetizer.custome.CircleImageView
+        android:id="@+id/mine_iv_avatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="@dimen/common_20dp"
+        android:src="@mipmap/img_avatar"
+        app:borderColor="@color/color_darker_gray"
+        app:borderWidth="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mine_toolBar"
+        app:type="circle" />
+
+    <TextView
+        android:id="@+id/mine_tv_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_20dp"
+        android:text="@string/nickname"
+        android:textColor="@color/color_black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mine_iv_avatar" />
+
+    <TextView
+        android:id="@+id/mine_tv_view_homepage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/common_5dp"
+        android:paddingBottom="@dimen/common_5dp"
+        android:text="@string/view_homepage"
+        android:textColor="@color/color_gray"
+        android:textSize="@dimen/common_sp_12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mine_tv_nickname" />
+
+    <View
+        android:id="@+id/mine_split_line"
+        android:layout_width="0.5dp"
+        android:layout_height="@dimen/common_30dp"
+        android:layout_marginTop="@dimen/common_40dp"
+        android:background="@color/color_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mine_tv_view_homepage" />
+
+    <TextView
+        android:id="@+id/mine_tv_collection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_40dp"
+        android:drawableStart="@mipmap/ic_action_collection"
+        android:drawablePadding="7dp"
+        android:padding="6dp"
+        android:text="@string/collection"
+        app:layout_constraintEnd_toEndOf="@id/mine_split_line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mine_tv_view_homepage" />
+
+    <TextView
+        android:id="@+id/mine_tv_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@mipmap/ic_action_comment"
+        android:drawablePadding="7dp"
+        android:padding="6dp"
+        android:text="@string/comment"
+        app:layout_constraintBaseline_toBaselineOf="@id/mine_tv_collection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/mine_split_line" />
+
+    <View
+        android:id="@+id/mine_baseline"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="@dimen/common_16dp"
+        android:background="@color/color_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mine_split_line" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/mine_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/common_30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/mine_baseline">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_mine_message"
+                android:text="@string/mine_message"
+                style="@style/fragmentMine_commonTextStyle" />
+
+            <TextView
+                android:id="@+id/tv_mine_attention"
+                android:text="@string/mine_attention"
+                style="@style/fragmentMine_commonTextStyle" />
+
+            <TextView
+                android:id="@+id/tv_mine_cache"
+                android:text="@string/mine_cache"
+                style="@style/fragmentMine_commonTextStyle"
+                />
+
+            <TextView
+                android:id="@+id/tv_watch_history"
+                android:text="@string/view_history"
+                style="@style/fragmentMine_commonTextStyle" />
+
+            <TextView
+                android:id="@+id/tv_feedback"
+                android:text="@string/feedback"
+                style="@style/fragmentMine_commonTextStyle" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 </android.support.constraint.ConstraintLayout>
+
+

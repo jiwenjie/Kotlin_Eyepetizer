@@ -1,11 +1,17 @@
 package com.example.root.kotlin_eyepetizer.fragment
 
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import com.example.baselibrary.utils.ErrorStatus
+import com.example.baselibrary.utils.ToastUtils
 import com.example.baselibrary.views.BaseMvpFragment
 import com.example.root.kotlin_eyepetizer.R
+import com.example.root.kotlin_eyepetizer.adapter.FollowAdapter
 import com.example.root.kotlin_eyepetizer.bean.HomeBean
 import com.example.root.kotlin_eyepetizer.contract.FollowContract
 import com.example.root.kotlin_eyepetizer.presenter.FollowPresenter
+import kotlinx.android.synthetic.main.layout_recyclerview.*
 
 /**
  *  author:Jiwenjie
@@ -18,7 +24,12 @@ class FollowFragment : BaseMvpFragment<FollowContract.FollowView, FollowPresente
 
    private var mTitle: String? = null
    private var itemList = ArrayList<HomeBean.Issue.Item>()
+   private val mFollowAdapter by lazy { activity?.let { FollowAdapter(activity!!) } }
 
+   /**
+    * 是否加载更多
+    */
+   private var loadingMore = false
 
    companion object {
       fun getInstance(title: String): FollowFragment {
@@ -33,28 +44,51 @@ class FollowFragment : BaseMvpFragment<FollowContract.FollowView, FollowPresente
    override fun getLayoutId(): Int = R.layout.layout_recyclerview
 
    override fun initFragment(savedInstanceState: Bundle?) {
-      TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+      mRecyclerView.layoutManager = LinearLayoutManager(activity)
+      mRecyclerView.adapter = mFollowAdapter
+      // 实现自动加载
+      mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+            val itemCount = mRecyclerView.layoutManager?.itemCount
+            val lastVisibleItem = (mRecyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
+            if (itemCount != null) {
+               if (!loadingMore && lastVisibleItem == (itemCount - 1)) {
+                  loadingMore = true
+                  mPresenter.loadMore()
+               }
+            }
+         }
+      })
+      mLayoutStatusView = multipleStatusView
    }
 
    override fun initPresenter(): FollowPresenter = FollowPresenter(this)
 
    override fun loadData() {
-      TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+      mPresenter.requestFollowList()
    }
 
    override fun setFollowInfo(issue: HomeBean.Issue) {
-      TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+      loadingMore = false
+      itemList = issue.itemList
+      mFollowAdapter?.addAllData(itemList)
    }
 
    override fun showRrror(errorMsg: String, errorCode: Int) {
-      TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+      ToastUtils.showToast(activity!!, errorMsg)
+      if (errorCode == ErrorStatus.NETWORK_ERROR) {
+         multipleStatusView.showNoNetwork()
+      } else {
+         multipleStatusView.showError()
+      }
    }
 
    override fun showLoading() {
-      TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+      multipleStatusView.showLoading()
    }
 
    override fun dismissLoading() {
-      TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+      multipleStatusView.showContent()
    }
 }

@@ -1,10 +1,9 @@
 package com.example.root.kotlin_eyepetizer.fragment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import com.example.baselibrary.views.BaseMvpFragment
 import com.example.baselibrary.views.BaseMvpPresenter
 import com.example.root.kotlin_eyepetizer.R
-import com.example.root.kotlin_eyepetizer.base.BaseFragment
 import com.example.root.kotlin_eyepetizer.base.IBaseView
 
 /**
@@ -14,7 +13,7 @@ import com.example.root.kotlin_eyepetizer.base.IBaseView
  *  desc:
  *  version:1.0
  */
-class IndexFragment : BaseFragment<IBaseView, BaseMvpPresenter<IBaseView>>() {
+class IndexFragment : BaseMvpFragment<IBaseView, BaseMvpPresenter<IBaseView>>() {
 
    private var mTitle: String? = null
 

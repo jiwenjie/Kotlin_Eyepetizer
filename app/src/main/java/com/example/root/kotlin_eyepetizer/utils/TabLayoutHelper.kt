@@ -12,7 +12,7 @@ import java.lang.reflect.Field
  *  author:Jiwenjie
  *  email:278630464@qq.com
  *  time:2018/11/14
- *  desc: TabLayout 的帮助类
+ *  desc: TabLayout 的帮助类 (自定义下划线的长度和 Tab 的布局)
  *  version:1.0
  */
 object TabLayoutHelper {
@@ -22,9 +22,10 @@ object TabLayoutHelper {
       val tabLayoutClass = tabLayout.javaClass
       var tabStrip: Field? = null
       try {
-         tabStrip = tabLayoutClass.getDeclaredField("mTabStrip")
+//         tabStrip = tabLayoutClass.getDeclaredField("mTabStrip")   // 28 以下
+         tabStrip = tabLayoutClass.getDeclaredField("slidingTabIndicator") // 28以上
          tabStrip!!.isAccessible = true
-      } catch (e: Exception) {
+      } catch (e: NoSuchFieldException) {
          e.printStackTrace()
       }
 
@@ -36,10 +37,11 @@ object TabLayoutHelper {
          for (i in 0 until layout!!.childCount) {
             val child = layout.getChildAt(i)
             child.setPadding(0, 0, 0, 0)
-            val params = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
+            val params = LinearLayout.LayoutParams(0,
+                    LinearLayout.LayoutParams.MATCH_PARENT, 1f)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-               params.marginStart = ScreenUtils.dip2px(App.INSTANCE!!.applicationContext, 50f)
-               params.marginEnd = ScreenUtils.dip2px(App.INSTANCE!!.applicationContext, 50f)
+               params.marginStart = ScreenUtils.dip2px(App.INSTANCE!!.applicationContext, 50f)!!
+               params.marginEnd = ScreenUtils.dip2px(App.INSTANCE!!.applicationContext, 50f)!!
             }
             child.layoutParams = params
             child.invalidate()
@@ -47,6 +49,7 @@ object TabLayoutHelper {
       } catch (e: IllegalAccessException) {
          e.printStackTrace()
       }
+
    }
 
 }

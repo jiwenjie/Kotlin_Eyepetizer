@@ -1,9 +1,9 @@
 package com.example.root.kotlin_eyepetizer.fragment
 
 import android.os.Bundle
+import com.example.baselibrary.views.BaseMvpFragment
 import com.example.baselibrary.views.BaseMvpPresenter
 import com.example.root.kotlin_eyepetizer.R
-import com.example.root.kotlin_eyepetizer.base.BaseFragment
 import com.example.root.kotlin_eyepetizer.base.IBaseView
 
 /**
@@ -13,7 +13,7 @@ import com.example.root.kotlin_eyepetizer.base.IBaseView
  *  desc: 分类的 Activity
  *  version:1.0
  */
-class CategoryFragment : BaseFragment<IBaseView, BaseMvpPresenter<IBaseView>>() {
+class CategoryFragment : BaseMvpFragment<IBaseView, BaseMvpPresenter<IBaseView>>() {
 
    private var mTitle: String? = null
 
@@ -34,11 +34,11 @@ class CategoryFragment : BaseFragment<IBaseView, BaseMvpPresenter<IBaseView>>() 
    override fun getLayoutId(): Int = R.layout.fragment_category
 
    override fun initFragment(savedInstanceState: Bundle?) {
-      TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
    }
 
    override fun loadData() {
-      TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
    }
 
 }
