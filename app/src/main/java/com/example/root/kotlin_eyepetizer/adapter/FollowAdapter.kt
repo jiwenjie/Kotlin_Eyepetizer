@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.item_follow.view.*
  *  desc:关注的 adapter
  *  version:1.0
  */
-class FollowAdapter(context: Context) : BaseHeaderFooterRecyclerAdapter<HomeBean.Issue.Item>(context) {
+class FollowAdapter(context: Context, dataList: ArrayList<HomeBean.Issue.Item>?) : BaseHeaderFooterRecyclerAdapter<HomeBean.Issue.Item>(context, dataList) {
 
     override fun getAdapterResId(): Int {
         return R.layout.item_follow

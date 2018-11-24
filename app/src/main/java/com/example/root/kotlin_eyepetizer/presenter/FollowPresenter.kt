@@ -16,12 +16,10 @@ import com.example.root.kotlin_eyepetizer.model.FollowModel
 class FollowPresenter(mView: FollowContract.FollowView) : BaseMvpPresenter<FollowContract.FollowView>(mView), FollowContract.FollowPresenter {
 
 
-    private var mFollowModel: FollowModel? = null
-    private var nextPageUrl: String? = null
-
-    init {
-        this.mFollowModel = FollowModel()
+    private val mFollowModel by lazy {
+        FollowModel()
     }
+    private var nextPageUrl: String? = null
 
     /**
      * 构造不添加 Model 实例
@@ -32,8 +30,8 @@ class FollowPresenter(mView: FollowContract.FollowView) : BaseMvpPresenter<Follo
     @SuppressLint("CheckResult")
     override fun requestFollowList() {
         mView?.showLoading()
-        mFollowModel?.requestFollowList()
-            ?.subscribe({
+        mFollowModel.requestFollowList()
+            .subscribe({
                 mView?.apply {
                     dismissLoading()
                     nextPageUrl = it.nextPageUrl
@@ -49,8 +47,8 @@ class FollowPresenter(mView: FollowContract.FollowView) : BaseMvpPresenter<Follo
 
     override fun loadMore() {
         nextPageUrl?.let {
-            mFollowModel?.loadMoreData(it)
-                ?.subscribe({
+            mFollowModel.loadMoreData(it)
+                .subscribe({
                     mView?.apply {
                         nextPageUrl = it.nextPageUrl
                         setFollowInfo(it)

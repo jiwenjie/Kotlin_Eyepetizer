@@ -24,7 +24,7 @@ class FollowFragment : BaseMvpFragment<FollowContract.FollowView, FollowPresente
 
    private var mTitle: String? = null
    private var itemList = ArrayList<HomeBean.Issue.Item>()
-   private val mFollowAdapter by lazy { activity?.let { FollowAdapter(activity!!) } }
+   private val mFollowAdapter by lazy { activity?.let { FollowAdapter(activity!!, itemList) } }
 
    /**
     * 是否加载更多
