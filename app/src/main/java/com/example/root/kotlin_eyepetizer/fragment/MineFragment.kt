@@ -9,6 +9,7 @@ import com.example.baselibrary.views.BaseMvpPresenter
 import com.example.root.kotlin_eyepetizer.R
 import com.example.root.kotlin_eyepetizer.activity.AboutActivity
 import com.example.root.kotlin_eyepetizer.activity.ProfileHomePageActivity
+import com.example.root.kotlin_eyepetizer.activity.WatchHistoryActivity
 import com.example.root.kotlin_eyepetizer.base.IBaseView
 import com.example.root.kotlin_eyepetizer.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.fragment_mine.*
@@ -82,7 +83,7 @@ class MineFragment : BaseMvpFragment<IBaseView, BaseMvpPresenter<IBaseView>>(), 
          v?.id == R.id.tv_mine_attention -> ToastUtils.showToast(activity!!, "我的关注")
          v?.id == R.id.tv_mine_cache -> ToastUtils.showToast(activity!!, "我的缓存")
 
-         v?.id == R.id.tv_watch_history -> startActivity(Intent())
+         v?.id == R.id.tv_watch_history -> startActivity(Intent(activity, WatchHistoryActivity::class.java))
          v?.id == R.id.tv_feedback -> ToastUtils.showToast(activity!!, "意见反馈")
       }
    }

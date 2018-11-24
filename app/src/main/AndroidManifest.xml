@@ -63,5 +63,10 @@
             android:name=".activity.WatchHistoryActivity"
             android:screenOrientation="portrait" />
 
+        <!--视频详情页面-->
+        <activity
+            android:name=".activity.VideoDetailActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 </manifest>

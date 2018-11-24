@@ -2,6 +2,8 @@ package com.example.root.kotlin_eyepetizer.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Base64
+import java.io.*
 import java.lang.reflect.Method
 
 
@@ -13,6 +15,7 @@ import java.lang.reflect.Method
  *  version:1.0
  */
 
+@Suppress("UNCHECKED_CAST")
 class WatchHistoryUtils {
 
     companion object {
@@ -102,6 +105,147 @@ class WatchHistoryUtils {
         /**
          * 得到保存数据的方法，我们根据默认值得到保存的数据的具体类型，然后调用相对于的方法获取值
          */
+        operator fun get(fileName: String, context: Context, key: String, defaultObject: Any): Any? {
+            val sp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE)
+
+            return when (defaultObject) {
+                is String -> sp.getString(key, defaultObject)
+                is Int -> sp.getInt(key, defaultObject)
+                is Boolean -> sp.getBoolean(key, defaultObject)
+                is Float -> sp.getFloat(key, defaultObject)
+                is Long -> sp.getLong(key, defaultObject)
+                else -> null
+            }
+        }
+
+        /**
+         * 移除某个 key 值已经对应的值
+         */
+        fun remove(fileName: String, context: Context, key: String) {
+            val sp = context.getSharedPreferences(fileName,
+                Context.MODE_PRIVATE)
+            val editor = sp.edit()
+            editor.remove(key)
+            SharedPreferencesCompat.apply(editor)
+        }
+
+        /**
+         * 清楚所有数据
+         */
+        fun clear(fileName: String, context: Context) {
+            val sp = context.getSharedPreferences(fileName,
+                Context.MODE_PRIVATE)
+            val editor = sp.edit()
+            editor.clear()
+            SharedPreferencesCompat.apply(editor)
+        }
+
+        /**
+         * 查询某个 key 是否已经存在
+         */
+        fun contains(fileName: String, context: Context, key: String): Boolean {
+            val sp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE)
+            return sp.contains(key)
+        }
+
+        /**
+         * 返回所有的键值对
+         */
+        fun getAll(fileName: String, context: Context): Map<String, *> {
+            val sp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE)
+            return sp.all
+        }
+
+        fun putObject(fileName: String, context: Context, `object`: Any?, key: String): Boolean {
+            val sp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE)
+
+            if (`object` == null) {
+                val editor = sp.edit().remove(key)
+                return editor.commit()
+            }
+
+            val baos = ByteArrayOutputStream()
+            var oos: ObjectOutputStream?
+            try {
+                oos = ObjectOutputStream(baos)
+                oos.writeObject(`object`)
+            } catch (e: IOException) {
+                e.printStackTrace()
+                return false
+            }
+
+            // 将对象放到 OutputStream 中
+            // 将对象转换成 byte 数组，并将其进行 base64 编码
+            val objectStr = String(Base64.encode(baos.toByteArray(), Base64.DEFAULT))
+
+            try {
+                baos.close()
+                oos.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+
+            val editor = sp.edit()
+            editor.putString(key, objectStr)
+            return editor.commit()
+        }
+
+        /**
+         * 得到保存数据的方法，我们根据默认值得到保存的数据的具体类型，然后调用相对于的方法获取值
+         */
+        fun getObject(fileName: String, context: Context, key: String): Any? {
+            val sharePre = context.getSharedPreferences(fileName,
+                Context.MODE_PRIVATE)
+            try {
+                val wordBase64 = sharePre.getString(key, "")
+                // 将 base64 格式字符串还原成 byte 数组
+                if (wordBase64 == null || wordBase64 == "") {
+                    // 不可少，否则在下面会报java.io.StreamCorruptedException
+                    return null
+                }
+                val objBytes = Base64.decode(wordBase64.toByteArray(), Base64.DEFAULT)
+                val bais = ByteArrayInputStream(objBytes)
+                val ois = ObjectInputStream(bais)
+                // 将 byte 数组转换成 produce 对象
+                val obj = ois.readObject()
+                bais.close()
+                ois.close()
+                return obj
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            return null
+        }
+
+        /**
+         * 序列化对象
+         */
+        @Throws(IOException::class)
+        private fun <A> serialize(obj: A): String {
+            val byteArrayOutputStream = ByteArrayOutputStream()
+            val objectOutputStream = ObjectOutputStream(byteArrayOutputStream)
+            objectOutputStream.writeObject(obj)
+            var serStr = byteArrayOutputStream.toString("ISO-8859-1")
+            serStr = java.net.URLEncoder.encode(serStr, "UTF-8")
+            objectOutputStream.close()
+            byteArrayOutputStream.close()
+            return serStr
+        }
+
+        /**
+         * 反序列化对象
+         */
+        @Suppress("UNCHECKED_CAST")
+        @Throws(IOException::class, ClassNotFoundException::class)
+        private fun <A> deSerialization(str: String): A {
+            val redStr = java.net.URLDecoder.decode(str, "UTF-8")
+            val byteArrayInputStream = ByteArrayInputStream(redStr.toByteArray(charset("ISO-8859-1")))
+            val objectInputStream = ObjectInputStream(byteArrayInputStream)
+            val obj = objectInputStream.readObject() as A
+            objectInputStream.close()
+            byteArrayInputStream.close()
+            return obj
+        }
 
     }
 

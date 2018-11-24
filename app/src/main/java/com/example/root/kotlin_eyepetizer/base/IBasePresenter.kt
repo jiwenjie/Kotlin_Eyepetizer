@@ -9,9 +9,9 @@ package com.example.root.kotlin_eyepetizer.base
  */
 interface IBasePresenter<V: IBaseView> {
 
-    fun attachView(mRootView: V)
-
-    fun detachView()
+//    fun attachView(mRootView: V)
+//
+//    fun detachView()
 
 }
 
