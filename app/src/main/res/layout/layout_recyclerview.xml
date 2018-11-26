@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.multiple_status_view.MultipleStatusView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.multiple_status_view.MultipleStatusView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/multipleStatusView"
     android:layout_width="match_parent"
@@ -18,3 +19,4 @@
         android:paddingBottom="@dimen/padding_tab_layout_bottom" />
 
 </com.example.multiple_status_view.MultipleStatusView>
+

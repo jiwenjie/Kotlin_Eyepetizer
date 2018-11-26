@@ -1,7 +1,9 @@
 package com.example.root.kotlin_eyepetizer.contract
 
 import com.example.root.kotlin_eyepetizer.base.IBaseView
+import com.example.root.kotlin_eyepetizer.base.IPresenter
 import com.example.root.kotlin_eyepetizer.bean.HomeBean
+import io.reactivex.Observable
 
 /**
  *  author:Jiwenjie
@@ -13,10 +15,10 @@ import com.example.root.kotlin_eyepetizer.bean.HomeBean
 interface RankContract {
 
    interface RankModel {
-
+      fun requestRankList(apiUrl: String): Observable<HomeBean.Issue>
    }
 
-   interface RankView : IBaseView {
+   interface View : IBaseView {
       /**
        * 设置排行榜的数据
        */
@@ -25,13 +27,12 @@ interface RankContract {
       fun showError(errorMsg: String, errorCode: Int)
    }
 
-   interface RankPresenter {
+   interface Presenter : IPresenter<View> {
       /**
        * 获取 TabInfo
        */
       fun requestRankList(apiUrl: String)
    }
-
 }
 
 

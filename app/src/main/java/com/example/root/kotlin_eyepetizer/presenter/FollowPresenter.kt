@@ -1,8 +1,7 @@
 package com.example.root.kotlin_eyepetizer.presenter
 
-import android.annotation.SuppressLint
 import com.example.baselibrary.utils.ExceptionHandle
-import com.example.baselibrary.views.BaseMvpPresenter
+import com.example.root.kotlin_eyepetizer.base.BasePresenter
 import com.example.root.kotlin_eyepetizer.contract.FollowContract
 import com.example.root.kotlin_eyepetizer.model.FollowModel
 
@@ -13,66 +12,57 @@ import com.example.root.kotlin_eyepetizer.model.FollowModel
  *  desc: 关注页面的 Presenter
  *  version:1.0
  */
-class FollowPresenter(mView: FollowContract.FollowView) : BaseMvpPresenter<FollowContract.FollowView>(mView), FollowContract.FollowPresenter {
 
+class FollowPresenter : BasePresenter<FollowContract.View>(), FollowContract.Presenter {
 
-    private val mFollowModel by lazy {
-        FollowModel()
-    }
-    private var nextPageUrl: String? = null
+   private val followModel by lazy { FollowModel() }
+   private var nextPageUrl: String? = null
 
-    /**
-     * 构造不添加 Model 实例
-     * 需要在 View 中初始化 Presenter，如果添加 Model 实例，则 View Model 耦合
-     * view 当前对应的 Activity 或者 Fragment
-     */
-
-    @SuppressLint("CheckResult")
-    override fun requestFollowList() {
-        mView?.showLoading()
-        mFollowModel.requestFollowList()
-            .subscribe({
-                mView?.apply {
+   /**
+    *  请求关注数据
+    */
+   override fun requestFollowList() {
+      checkViewAttached()
+      mRootView?.showLoading()
+      val disposable = followModel.requestFollowList()
+              .subscribe({ issue ->
+                 mRootView?.apply {
                     dismissLoading()
-                    nextPageUrl = it.nextPageUrl
-                    setFollowInfo(it)
-                }
-            }, {
-                mView?.apply {
-                    // 处理异常
-                    showRrror(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
-                }
-            })
-    }
+                    nextPageUrl = issue.nextPageUrl
+                    setFollowInfo(issue)
+                 }
+              }, { throwable ->
+                 mRootView?.apply {
+                    //处理异常
+                    showError(ExceptionHandle.handleException(throwable), ExceptionHandle.errorCode)
+                 }
+              })
+      addSubscription(disposable)
+   }
 
-    override fun loadMore() {
-        nextPageUrl?.let {
-            mFollowModel.loadMoreData(it)
-                .subscribe({
-                    mView?.apply {
-                        nextPageUrl = it.nextPageUrl
-                        setFollowInfo(it)
+   /**
+    * 加载更多
+    */
+   override fun loadMoreData() {
+      val disposable = nextPageUrl?.let {
+         followModel.loadMoreData(it)
+                 .subscribe({ issue ->
+                    mRootView?.apply {
+                       nextPageUrl = issue.nextPageUrl
+                       setFollowInfo(issue)
                     }
-                }, {
-                    mView?.apply {
-                        showRrror(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+
+                 }, { t ->
+                    mRootView?.apply {
+                       showError(ExceptionHandle.handleException(t), ExceptionHandle.errorCode)
                     }
-                })
-        }
-    }
+                 })
+
+      }
+      if (disposable != null) {
+         addSubscription(disposable)
+      }
+   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

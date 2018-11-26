@@ -75,6 +75,8 @@ dependencies {
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     //腾讯 bugly
     implementation 'com.tencent.bugly:crashreport:2.6.6.1'
+    //运行时权限
+    implementation'pub.devrel:easypermissions:1.2.0'
 
     implementation project(':baselibrary')
     implementation project(':multiple_status_view')

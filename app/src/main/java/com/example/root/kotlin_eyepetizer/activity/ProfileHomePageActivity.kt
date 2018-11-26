@@ -1,7 +1,6 @@
 package com.example.root.kotlin_eyepetizer.activity
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v4.widget.NestedScrollView
@@ -39,8 +38,6 @@ class ProfileHomePageActivity : AppCompatActivity() {
       StatusBarUtil.darkMode(this)
       StatusBarUtil.setPaddingSmart(this, toolbar)
 
-      toolbar_avatar.setBackgroundColor(Color.TRANSPARENT)
-
       refreshLayout.setOnMultiPurposeListener(object : SimpleMultiPurposeListener() {
          override fun onHeaderPulling(header: RefreshHeader?, percent: Float, offset: Int, headerHeight: Int, extendHeight: Int) {
             mOffset = offset / 2
@@ -66,10 +63,8 @@ class ProfileHomePageActivity : AppCompatActivity() {
             if (lastScrollY < h) {
                tScrollY = Math.min(h, tScrollY)
                mScrollY = if (tScrollY > h) h else tScrollY
-               buttonBarLayout.alpha = 1f * mScrollY / h
                toolbar.setBackgroundColor(255 * mScrollY / h shl 24 or color)
                parallax.translationY = (mOffset - mScrollY).toFloat()
-
                /** 这里的 ToolBar 颜色没有显示透明，未解决 **/
             }
             lastScrollY = tScrollY
@@ -80,9 +75,9 @@ class ProfileHomePageActivity : AppCompatActivity() {
          finish()
       }
 
+      /** 刷新设置 **/
       refreshLayout.setOnRefreshListener {
          mWebView.loadUrl(UriConstant.GitHub_URL)
-         buttonBarLayout.alpha = 0f
       }
       refreshLayout.autoRefresh()
 
@@ -99,7 +94,5 @@ class ProfileHomePageActivity : AppCompatActivity() {
             view!!.loadUrl(String.format(Locale.CHINA, "javascript:document.body.style.paddingTop='%fpx'; void 0", DensityUtil.px2dp(mWebView.paddingTop)))
          }
       }
-
    }
-
 }

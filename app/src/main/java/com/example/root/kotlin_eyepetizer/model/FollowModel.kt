@@ -7,7 +7,6 @@ import com.example.root.kotlin_eyepetizer.bean.HomeBean
 import com.example.root.kotlin_eyepetizer.contract.FollowContract
 import com.example.root.kotlin_eyepetizer.utils.SchedulerUtils
 import io.reactivex.Observable
-import io.reactivex.disposables.Disposable
 
 /**
  *  author:Jiwenjie
@@ -18,26 +17,19 @@ import io.reactivex.disposables.Disposable
  */
 class FollowModel : FollowContract.FollowModel {
 
-   /* 为了能在 presenter 中引用，执行打断等操作 */
-   var mListDisposable: Disposable? = null
-   var mLordMoreDisposable: Disposable? = null
-
    override fun requestFollowList(): Observable<HomeBean.Issue> {
-       return mListDisposable.let {
-          RetrofitManager.provideClient(UriConstant.BASE_URL)
+       return RetrofitManager.provideClient(UriConstant.BASE_URL)
               .create(ApiService::class.java)
               .getFollowInfo()
               .compose(SchedulerUtils.ioToMain())
-      }
+
    }
 
    override fun loadMoreData(url: String): Observable<HomeBean.Issue> {
-        return mLordMoreDisposable.let {
-            RetrofitManager.provideClient(UriConstant.BASE_URL)
+        return RetrofitManager.provideClient(UriConstant.BASE_URL)
                 .create(ApiService::class.java)
                 .getIssueData(url)
                 .compose(SchedulerUtils.ioToMain())
-        }
    }
 }
 

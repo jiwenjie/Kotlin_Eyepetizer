@@ -33,7 +33,6 @@ class CategoryDetailAdapter(context: Context, dataList: ArrayList<HomeBean.Issue
    override fun convertView(itemView: View?, data: HomeBean.Issue.Item) {
       val itemData = data.data
       val cover = itemData?.cover?.feed?:""
-//      val image = itemView.findViewById(R.id.iv_image)
       // 加载封页图
       Glide.with(mContext)
               .load(cover)

@@ -5,14 +5,13 @@ import android.support.v4.app.Fragment
 import com.example.baselibrary.adapter.BaseFragmentPagerAdapter
 import com.example.baselibrary.utils.ErrorStatus
 import com.example.baselibrary.utils.ToastUtils
-import com.example.baselibrary.views.BaseMvpFragment
 import com.example.root.kotlin_eyepetizer.R
+import com.example.root.kotlin_eyepetizer.base.BaseAppMvpFragment
 import com.example.root.kotlin_eyepetizer.bean.TabInfoBean
 import com.example.root.kotlin_eyepetizer.contract.HotContract
 import com.example.root.kotlin_eyepetizer.presenter.HotTabPresenter
 import com.example.root.kotlin_eyepetizer.utils.StatusBarUtil
-import com.example.root.kotlin_eyepetizer.utils.TabLayoutHelper
-import kotlinx.android.synthetic.main.fragment_discovery.*
+import kotlinx.android.synthetic.main.fragment_hot.*
 
 /**
  *  author:Jiwenjie
@@ -21,10 +20,15 @@ import kotlinx.android.synthetic.main.fragment_discovery.*
  *  desc:
  *  version:1.0
  */
-class HotFragment : BaseMvpFragment<HotContract.View, HotTabPresenter>(), HotContract.View {
 
+class HotFragment : BaseAppMvpFragment(), HotContract.View {
+
+   private val mPresenter by lazy { HotTabPresenter() }
    private var mTitle: String? = null
 
+   /**
+    * 存放 tab 标题
+    */
    private val mTabTitleList = ArrayList<String>()
    private val mFragmentList = ArrayList<Fragment>()
 
@@ -38,50 +42,54 @@ class HotFragment : BaseMvpFragment<HotContract.View, HotTabPresenter>(), HotCon
       }
    }
 
-   override fun loadData() {
+   init {
+      mPresenter.attachView(this)
+   }
+
+   override fun getLayoutId(): Int = R.layout.fragment_hot
+
+   override fun lazyLoad() {
       mPresenter.getTabInfo()
    }
 
-   override fun getLayoutId(): Int {
-      return R.layout.fragment_discovery  // 发现和热门是同一个布局，只是内容显示不同
-   }
-
-   override fun initFragment(savedInstanceState: Bundle?) {
-      mLayoutStatusView = fragment_discovery_multipleStatusView
+   override fun initView() {
+      mLayoutStatusView = multipleStatusView
       //状态栏透明和间距处理
       activity?.let { StatusBarUtil.darkMode(it) }
-      activity?.let { StatusBarUtil.setPaddingSmart(it, fragment_discovery_toolbar) }
+      activity?.let { StatusBarUtil.setPaddingSmart(it, mToolbar) }
    }
 
-   override fun initPresenter(): HotTabPresenter {
-      return HotTabPresenter(this)
+   override fun showLoading() {
+      multipleStatusView.showLoading()
    }
 
+   override fun dismissLoading() {
+
+   }
+
+   /**
+    * 设置 TabInfo
+    */
    override fun setTabInfo(tabInfoBean: TabInfoBean) {
-      mLayoutStatusView.showContent()
+      multipleStatusView.showContent()
 
       tabInfoBean.tabInfo.tabList.mapTo(mTabTitleList) { it.name }
       tabInfoBean.tabInfo.tabList.mapTo(mFragmentList) { RankFragment.getInstance(it.apiUrl) }
-
-      mViewPager.adapter = BaseFragmentPagerAdapter(fragmentManager, mFragmentList, mTabTitleList)
-      mTabLayout.setupWithViewPager(mViewPager)
-      TabLayoutHelper.setUpIndicatorWidth(mTabLayout)
+      mHotViewPager.adapter = BaseFragmentPagerAdapter(childFragmentManager, mFragmentList, mTabTitleList)
+      mHotTabLayout.setupWithViewPager(mHotViewPager)
    }
 
    override fun showError(errorMsg: String, errorCode: Int) {
       ToastUtils.showToast(activity!!, errorMsg)
       if (errorCode == ErrorStatus.NETWORK_ERROR) {
-         mLayoutStatusView.showNoNetwork()
+         multipleStatusView.showNoNetwork()
       } else {
-         mLayoutStatusView.showError()
+         multipleStatusView.showError()
       }
    }
 
-   override fun showLoading() {
-      mLayoutStatusView.showLoading()
-   }
-
-   override fun dismissLoading() {
-       mLayoutStatusView.showContent()
+   override fun onDestroy() {
+      super.onDestroy()
+      mPresenter.detachView()
    }
 }

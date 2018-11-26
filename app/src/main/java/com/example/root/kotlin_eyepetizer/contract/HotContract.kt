@@ -1,6 +1,7 @@
 package com.example.root.kotlin_eyepetizer.contract
 
 import com.example.root.kotlin_eyepetizer.base.IBaseView
+import com.example.root.kotlin_eyepetizer.base.IPresenter
 import com.example.root.kotlin_eyepetizer.bean.TabInfoBean
 import io.reactivex.Observable
 
@@ -13,14 +14,14 @@ import io.reactivex.Observable
  */
 interface HotContract {
 
-   interface modelView {
+   interface HotModel {
       /**
        * 获取 TabInfo
        */
       fun getTabInfo(): Observable<TabInfoBean>
    }
 
-   interface View: IBaseView {
+   interface View : IBaseView {
       /**
        * 设置 TabInfo
        */
@@ -29,12 +30,29 @@ interface HotContract {
       fun showError(errorMsg: String, errorCode: Int)
    }
 
-   interface Preserent {
+
+   interface Presenter : IPresenter<View> {
       /**
        * 获取 TabInfo
        */
       fun getTabInfo()
    }
+
+//   interface View: IBaseView {
+//      /**
+//       * 设置 TabInfo
+//       */
+//      fun setTabInfo(tabInfoBean: TabInfoBean)
+//
+//      fun showError(errorMsg: String, errorCode: Int)
+//   }
+//
+//   interface Preserent {
+//      /**
+//       * 获取 TabInfo
+//       */
+//      fun getTabInfo()
+//   }
 
 }
 
