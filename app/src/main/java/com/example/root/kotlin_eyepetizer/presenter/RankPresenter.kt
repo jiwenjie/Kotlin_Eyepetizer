@@ -1,7 +1,7 @@
 package com.example.root.kotlin_eyepetizer.presenter
 
 import com.example.baselibrary.utils.ExceptionHandle
-import com.example.baselibrary.views.BaseMvpPresenter
+import com.example.root.kotlin_eyepetizer.base.BasePresenter
 import com.example.root.kotlin_eyepetizer.contract.RankContract
 import com.example.root.kotlin_eyepetizer.model.RankModel
 
@@ -12,40 +12,30 @@ import com.example.root.kotlin_eyepetizer.model.RankModel
  *  desc: 获取排行榜数据的 Presenter
  *  version:1.0
  */
-class RankPresenter(view: RankContract.RankView) : BaseMvpPresenter<RankContract.RankView>(view), RankContract.RankPresenter {
+
+class RankPresenter : BasePresenter<RankContract.View>(), RankContract.Presenter {
 
    private val rankModel by lazy { RankModel() }
 
+   /**
+    *  请求排行榜数据
+    */
    override fun requestRankList(apiUrl: String) {
-      mView.showLoading()
+      checkViewAttached()
+      mRootView?.showLoading()
       val disposable = rankModel.requestRankList(apiUrl)
-              .subscribe({
-                 mView.apply {
+              .subscribe({ issue ->
+                 mRootView?.apply {
                     dismissLoading()
-                    setRankList(it.itemList)
+                    setRankList(issue.itemList)
                  }
-              },{
-                 mView.apply {
-                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+              }, { throwable ->
+                 mRootView?.apply {
+                    //处理异常
+                    showError(ExceptionHandle.handleException(throwable),ExceptionHandle.errorCode)
                  }
               })
+      addSubscription(disposable)
    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

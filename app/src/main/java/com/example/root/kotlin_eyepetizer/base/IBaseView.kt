@@ -10,6 +10,7 @@ import com.example.baselibrary.views.BaseMvpViewImpl
  *  version:1.0
  */
 interface IBaseView : BaseMvpViewImpl {
+
     fun showLoading()
 
     fun dismissLoading()

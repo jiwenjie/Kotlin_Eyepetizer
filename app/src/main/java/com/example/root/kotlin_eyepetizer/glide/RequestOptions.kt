@@ -14,8 +14,7 @@ object RequestOptions {
 
     fun getRequestOptions() : RequestOptions {
         return RequestOptions()
-            .placeholder(R.mipmap.default_avatar)
-            .circleCrop()
+               .placeholder(R.drawable.placeholder_banner)
     }
 
 }

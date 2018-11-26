@@ -82,7 +82,6 @@ class MineFragment : BaseMvpFragment<IBaseView, BaseMvpPresenter<IBaseView>>(), 
          v?.id == R.id.tv_mine_message -> ToastUtils.showToast(activity!!, "我的消息")
          v?.id == R.id.tv_mine_attention -> ToastUtils.showToast(activity!!, "我的关注")
          v?.id == R.id.tv_mine_cache -> ToastUtils.showToast(activity!!, "我的缓存")
-
          v?.id == R.id.tv_watch_history -> startActivity(Intent(activity, WatchHistoryActivity::class.java))
          v?.id == R.id.tv_feedback -> ToastUtils.showToast(activity!!, "意见反馈")
       }

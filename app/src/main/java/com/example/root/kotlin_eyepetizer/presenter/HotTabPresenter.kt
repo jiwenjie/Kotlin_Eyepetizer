@@ -1,7 +1,7 @@
 package com.example.root.kotlin_eyepetizer.presenter
 
 import com.example.baselibrary.utils.ExceptionHandle
-import com.example.baselibrary.views.BaseMvpPresenter
+import com.example.root.kotlin_eyepetizer.base.BasePresenter
 import com.example.root.kotlin_eyepetizer.contract.HotContract
 import com.example.root.kotlin_eyepetizer.model.HotTabModel
 
@@ -12,21 +12,21 @@ import com.example.root.kotlin_eyepetizer.model.HotTabModel
  *  desc: 热门的 Presenter
  *  version:1.0
  */
-class HotTabPresenter(mView: HotContract.View) : BaseMvpPresenter<HotContract.View>(mView), HotContract.Preserent {
 
-   private val model by lazy {
-       HotTabModel()
-   }
+class HotTabPresenter : BasePresenter<HotContract.View>(), HotContract.Presenter {
+
+   private val hotTabModel by lazy { HotTabModel() }
 
    override fun getTabInfo() {
-      mView.showLoading()
-      val disposable = model.getTabInfo()
-              .subscribe({
-                 mView.dismissLoading()
-                 mView.setTabInfo(it)
-              }, {
-                 mView.showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+      checkViewAttached()
+      mRootView?.showLoading()
+      val disposable = hotTabModel.getTabInfo()
+              .subscribe({ tabInfo ->
+                 mRootView?.setTabInfo(tabInfo)
+              }, { throwable ->
+                 //处理异常
+                 mRootView?.showError(ExceptionHandle.handleException(throwable), ExceptionHandle.errorCode)
               })
+      addSubscription(disposable)
    }
-
 }

@@ -1,10 +1,8 @@
 package com.example.root.kotlin_eyepetizer.fragment
 
 import android.os.Bundle
-import com.example.baselibrary.views.BaseMvpFragment
-import com.example.baselibrary.views.BaseMvpPresenter
 import com.example.root.kotlin_eyepetizer.R
-import com.example.root.kotlin_eyepetizer.base.IBaseView
+import com.example.root.kotlin_eyepetizer.base.BaseAppMvpFragment
 
 /**
  *  author:Jiwenjie
@@ -13,7 +11,8 @@ import com.example.root.kotlin_eyepetizer.base.IBaseView
  *  desc:
  *  version:1.0
  */
-class IndexFragment : BaseMvpFragment<IBaseView, BaseMvpPresenter<IBaseView>>() {
+
+class IndexFragment : BaseAppMvpFragment() {
 
    private var mTitle: String? = null
 
@@ -27,19 +26,15 @@ class IndexFragment : BaseMvpFragment<IBaseView, BaseMvpPresenter<IBaseView>>() 
       }
    }
 
-   override fun loadData() {
-
-   }
-
    override fun getLayoutId(): Int {
       return R.layout.fragment_index
    }
 
-   override fun initFragment(savedInstanceState: Bundle?) {
+   override fun initView() {
 
    }
 
-   override fun initPresenter(): BaseMvpPresenter<IBaseView>? {
-      return null
+   override fun lazyLoad() {
+
    }
 }

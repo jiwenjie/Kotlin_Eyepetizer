@@ -55,7 +55,9 @@ public abstract class BaseMvpFragment<V extends BaseMvpViewImpl, P extends BaseM
     */
    protected MultipleStatusView mLayoutStatusView;
 
-   private interface mRetryClickListener extends View.OnClickListener { }
+   private interface mRetryClickListener extends View.OnClickListener {
+
+   }
 
    /**
     * 加载数据

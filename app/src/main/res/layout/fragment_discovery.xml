@@ -6,61 +6,62 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/fragment_discovery_toolbar"
-        android:background="@color/color_title_bg"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/color_title_bg"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:id="@+id/mHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/hot_title"
             android:textColor="@color/color_item_title"
             android:textSize="@dimen/common_sp_18"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textStyle="bold" />
     </android.support.v7.widget.Toolbar>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/mTabLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_discovery_toolbar"
         android:layout_width="match_parent"
-        android:background="@color/color_title_bg"
         android:layout_height="@dimen/common_40dp"
+        android:background="@color/color_title_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_discovery_toolbar"
         app:tabGravity="fill"
-        app:tabMode="fixed"
-        app:tabIndicatorFullWidth="true"
-        app:tabMinWidth="100dp"
         app:tabIndicatorColor="#000"
+        app:tabIndicatorFullWidth="true"
         app:tabIndicatorHeight="2dp"
+        app:tabMinWidth="100dp"
+        app:tabMode="fixed"
         app:tabSelectedTextColor="#000"
         app:tabTextColor="#5000" />
 
     <View
         android:id="@+id/Split_line"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mTabLayout"
-        android:background="@color/color_light_black"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/line_1px" />
+        android:layout_height="@dimen/line_1px"
+        android:background="@color/color_light_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mTabLayout" />
 
     <com.example.multiple_status_view.MultipleStatusView
-        android:layout_height="0dp"
         android:id="@+id/fragment_discovery_multipleStatusView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Split_line"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/backgroundColor"
         android:layout_width="match_parent"
-        app:layout_constraintVertical_weight="1"
+        android:layout_height="0dp"
+        android:background="@color/backgroundColor"
         app:emptyView="@layout/layout_empty_view"
         app:errorView="@layout/layout_error_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Split_line"
+        app:layout_constraintVertical_weight="1"
         app:loadingView="@layout/layout_loading_view"
         app:noNetworkView="@layout/layout_network_view">
 
