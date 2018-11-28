@@ -11,4 +11,5 @@ import io.reactivex.schedulers.Schedulers
  *  desc:
  *  version:1.0
  */
-class IoMainScheduler<T> : BaseScheduler<T>(Schedulers.io(), AndroidSchedulers.mainThread())
+class IoMainScheduler<T>
+    : BaseScheduler<T>(Schedulers.io(), AndroidSchedulers.mainThread())

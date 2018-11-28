@@ -2,7 +2,7 @@ package com.example.root.kotlin_eyepetizer.model
 
 import com.example.baselibrary.RetrofitManager
 import com.example.root.kotlin_eyepetizer.api.ApiService
-import com.example.root.kotlin_eyepetizer.api.UriConstant
+import com.example.root.kotlin_eyepetizer.api.Constant
 import com.example.root.kotlin_eyepetizer.bean.HomeBean
 import com.example.root.kotlin_eyepetizer.contract.FollowContract
 import com.example.root.kotlin_eyepetizer.utils.SchedulerUtils
@@ -18,7 +18,7 @@ import io.reactivex.Observable
 class FollowModel : FollowContract.FollowModel {
 
    override fun requestFollowList(): Observable<HomeBean.Issue> {
-       return RetrofitManager.provideClient(UriConstant.BASE_URL)
+       return RetrofitManager.provideClient(Constant.BASE_URL)
               .create(ApiService::class.java)
               .getFollowInfo()
               .compose(SchedulerUtils.ioToMain())
@@ -26,7 +26,7 @@ class FollowModel : FollowContract.FollowModel {
    }
 
    override fun loadMoreData(url: String): Observable<HomeBean.Issue> {
-        return RetrofitManager.provideClient(UriConstant.BASE_URL)
+        return RetrofitManager.provideClient(Constant.BASE_URL)
                 .create(ApiService::class.java)
                 .getIssueData(url)
                 .compose(SchedulerUtils.ioToMain())

@@ -12,7 +12,7 @@ import com.example.baselibrary.utils.ToastUtils
 import com.example.root.kotlin_eyepetizer.R
 import com.example.root.kotlin_eyepetizer.bean.HomeBean
 import com.example.root.kotlin_eyepetizer.durationFormat
-import com.example.root.kotlin_eyepetizer.glide.RequestOptions
+import com.example.root.kotlin_eyepetizer.glide.RequestOptionSet
 import kotlinx.android.synthetic.main.item_follow_horizontal.view.*
 
 /**
@@ -31,7 +31,7 @@ class FollowHorizontalAdapter(context: Context, categoryList: ArrayList<HomeBean
         val horezontalItemData = data.data
         Glide.with(mContext)
                 .load(data.data?.cover?.feed)
-                .apply(RequestOptions.getRequestOptions())
+                .apply(RequestOptionSet.getRequestOptions())
                 .transition(DrawableTransitionOptions().crossFade())
                 .into(itemView!!.iv_cover_feed)
 

@@ -5,6 +5,8 @@ import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.util.Log;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * author:Jiwenjie
@@ -16,6 +18,8 @@ import android.util.Log;
 public abstract class BaseMvpPresenter<V extends BaseMvpViewImpl>
         implements LifecycleObserver {
 
+    /** 防止内存泄漏调用 **/
+    protected CompositeDisposable compositeDisposable = new CompositeDisposable();
     protected static final String TAG = BaseMvpPresenter.class.getSimpleName();
     /* Activity Fragment 对应的 view 接口 */
     protected V mView;
@@ -26,6 +30,13 @@ public abstract class BaseMvpPresenter<V extends BaseMvpViewImpl>
      */
     public BaseMvpPresenter(V view) {
         this.mView = view;
+    }
+
+    /**
+     * 添加 disposable, 主要防止 RxJava 内存泄漏
+     */
+    protected void addSubscription(Disposable disposable) {
+        compositeDisposable.add(disposable);
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
@@ -56,6 +67,10 @@ public abstract class BaseMvpPresenter<V extends BaseMvpViewImpl>
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     protected void onDestroy() {
         this.mView = null;
+        // 保证 activity 结束的时候取消所有正在执行的订阅
+        if (!compositeDisposable.isDisposed()) {
+            compositeDisposable.clear();
+        }
         Log.d(TAG, "onDestroy");
     }
 

@@ -279,7 +279,6 @@ class StatusBarUtil {
          val a = if (color and -0x1000000 == 0) 0xff else color.ushr(24)
          return color and 0x00ffffff or ((a * alpha).toInt() shl 24)
       }
-
    }
 }
 

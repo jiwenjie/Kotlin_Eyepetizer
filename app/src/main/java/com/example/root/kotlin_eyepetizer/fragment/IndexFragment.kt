@@ -8,7 +8,7 @@ import com.example.root.kotlin_eyepetizer.base.BaseAppMvpFragment
  *  author:Jiwenjie
  *  email:278630464@qq.com
  *  time:2018/11/07
- *  desc:
+ *  desc:首页 fragment，列表 和 banner 页面的展示
  *  version:1.0
  */
 

@@ -3,47 +3,24 @@ package com.example.root.kotlin_eyepetizer.model
 import com.example.baselibrary.RetrofitManager
 import com.example.root.kotlin_eyepetizer.api.ApiService
 import com.example.root.kotlin_eyepetizer.api.Constant
-import com.example.root.kotlin_eyepetizer.bean.HomeBean
-import com.example.root.kotlin_eyepetizer.contract.RankContract
+import com.example.root.kotlin_eyepetizer.bean.CategoryBean
+import com.example.root.kotlin_eyepetizer.contract.CategoryContract
 import com.example.root.kotlin_eyepetizer.utils.SchedulerUtils
 import io.reactivex.Observable
 
 /**
  *  author:Jiwenjie
  *  email:278630464@qq.com
- *  time:2018/11/21
- *  desc: 排行榜的 Model
+ *  time:2018/11/26
+ *  desc:分类本身列表的 Model (分类的每个 item 点击进去的详情也是列表页面)
  *  version:1.0
  */
-class RankModel : RankContract.RankModel {
+class CategoryModel : CategoryContract.CategoryModel {
 
-   /**
-    * 获取排行榜的数据
-    */
-   override fun requestRankList(apiUrl: String): Observable<HomeBean.Issue> {
-      return RetrofitManager
-              .provideClient(Constant.BASE_URL)
+   override fun getCategoryData(): Observable<ArrayList<CategoryBean>> {
+      return RetrofitManager.provideClient(Constant.BASE_URL)
               .create(ApiService::class.java)
-              .getIssueData(apiUrl)
+              .getCategory()
               .compose(SchedulerUtils.ioToMain())
    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
