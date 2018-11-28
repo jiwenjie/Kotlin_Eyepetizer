@@ -45,7 +45,17 @@
             android:screenOrientation="portrait" />
 
         <!--测试专用-->
-        <!--<activity android:name=".test.TestActivity" />-->
+
+        <!--<activity-->
+                <!--android:name=".test.TestActivity"-->
+                <!--android:screenOrientation="portrait">-->
+            <!--&lt;!&ndash;android:theme="@style/AppTheme.NoActionBar.FullScreen">&ndash;&gt;-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
         <!--<activity android:name=".test.TestKotlinActivity" />-->
 
         <!--关于-->
@@ -66,6 +76,11 @@
         <!--视频详情页面-->
         <activity
             android:name=".activity.VideoDetailActivity"
+            android:screenOrientation="portrait" />
+
+        <!--具体到每一个分类的列表活动-->
+        <activity
+            android:name=".activity.CategoryListActivity"
             android:screenOrientation="portrait" />
 
     </application>

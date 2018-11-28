@@ -2,7 +2,7 @@ package com.example.root.kotlin_eyepetizer.model
 
 import com.example.baselibrary.RetrofitManager
 import com.example.root.kotlin_eyepetizer.api.ApiService
-import com.example.root.kotlin_eyepetizer.api.UriConstant
+import com.example.root.kotlin_eyepetizer.api.Constant
 import com.example.root.kotlin_eyepetizer.bean.TabInfoBean
 import com.example.root.kotlin_eyepetizer.contract.HotContract
 import com.example.root.kotlin_eyepetizer.utils.SchedulerUtils
@@ -21,7 +21,7 @@ class HotTabModel : HotContract.HotModel {
     * 获取 TabInfo
     */
    override fun getTabInfo(): Observable<TabInfoBean> {
-      return RetrofitManager.provideClient(UriConstant.BASE_URL)
+      return RetrofitManager.provideClient(Constant.BASE_URL)
               .create(ApiService::class.java)
               .getRankList()
               .compose(SchedulerUtils.ioToMain())

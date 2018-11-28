@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.example.root.kotlin_eyepetizer.R
-import com.example.root.kotlin_eyepetizer.api.UriConstant
+import com.example.root.kotlin_eyepetizer.api.Constant
 import com.example.root.kotlin_eyepetizer.utils.StatusBarUtil
 import com.scwang.smartrefresh.layout.api.RefreshHeader
 import com.scwang.smartrefresh.layout.listener.SimpleMultiPurposeListener
@@ -77,7 +77,7 @@ class ProfileHomePageActivity : AppCompatActivity() {
 
       /** 刷新设置 **/
       refreshLayout.setOnRefreshListener {
-         mWebView.loadUrl(UriConstant.GitHub_URL)
+         mWebView.loadUrl(Constant.GitHub_URL)
       }
       refreshLayout.autoRefresh()
 

@@ -20,6 +20,9 @@ public abstract class BaseMvpFragment<V extends BaseMvpViewImpl, P extends BaseM
 
    protected View mRootView;
    protected P mPresenter;
+   /** 这里注意，一开始被绕进去了，不知道该怎么添加监听事件，
+    * 一直都没有成功，其实很简单，new 一个 View.OnClickListener 就 OK 了 **/
+   protected View.OnClickListener mListener; /** 点击重试的监听 **/
 
    @Nullable
    @Override
@@ -35,6 +38,8 @@ public abstract class BaseMvpFragment<V extends BaseMvpViewImpl, P extends BaseM
       /* 注册 lifecycle */
       if (mPresenter != null) getLifecycle().addObserver(mPresenter);
       initFragment(savedInstanceState);
+      //多种状态切换的view 重试点击事件
+      if (mLayoutStatusView != null) mLayoutStatusView.setOnClickListener(mListener = v -> loadData());
       loadData();
       setListener();
    }
@@ -46,18 +51,13 @@ public abstract class BaseMvpFragment<V extends BaseMvpViewImpl, P extends BaseM
    protected abstract P initPresenter();
 
    protected void setListener() {
-      mRetryClickListener listener = v -> loadData();
-      if (mLayoutStatusView != null) mLayoutStatusView.setOnRetryClickListener(listener);
+
    }
 
    /**
     * 多种状态的 View 切换
     */
    protected MultipleStatusView mLayoutStatusView;
-
-   private interface mRetryClickListener extends View.OnClickListener {
-
-   }
 
    /**
     * 加载数据

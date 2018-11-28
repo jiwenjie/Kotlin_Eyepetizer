@@ -2,14 +2,17 @@ package com.example.baselibrary;
 
 import android.text.TextUtils;
 import android.util.Log;
-
-import java.util.concurrent.TimeUnit;
-
+import com.example.baselibrary.utils.AppUtils;
+import okhttp3.HttpUrl;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * author:Jiwenjie
@@ -27,6 +30,8 @@ public class RetrofitManager {
     private static Retrofit mRetrofit;
     /* 用于动态修改 url */
     private static String url;
+
+//    private String token = new Preference<String>("token", "");
 
     private RetrofitManager() {
 
@@ -59,17 +64,50 @@ public class RetrofitManager {
      * 头部信息通过 Retrofit Header 注解添加
      */
     private static OkHttpClient genericOkClient() {
+        //添加一个log拦截器,打印所有的log
         HttpLoggingInterceptor loggingInterceptor
                 = new HttpLoggingInterceptor(
                 message -> Log.i(TAG, "Interceptor message =>" + message));
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
+        //设置请求的缓存大小和位置
         return new OkHttpClient.Builder()
+                .addInterceptor(addQueryParameterInterceptor()) // 参数添加
+                .addInterceptor(addHeaderInterceptor()) // token 过滤
                 .connectTimeout(CONN_TIME, TimeUnit.SECONDS)
                 .readTimeout(READ_TIME, TimeUnit.SECONDS)
                 .writeTimeout(WRITE_TIME, TimeUnit.SECONDS)
-                .addNetworkInterceptor(loggingInterceptor)
+                .addNetworkInterceptor(loggingInterceptor)  //日志，所有的请求响应度看到
                 .build();
+    }
+
+    /**
+     * 设置公共参数
+     */
+    private static Interceptor addQueryParameterInterceptor() {
+        return chain -> {
+            Request originalRequest = chain.request();
+            HttpUrl modifiedUrl = originalRequest.url().newBuilder()
+                    .addQueryParameter("udid", "d2807c895f0348a180148c9dfa6f2feeac0781b5")
+                    .addQueryParameter("deviceModel", AppUtils.Companion.getMobileModel())
+                    .build();
+            Request request = originalRequest.newBuilder().url(modifiedUrl).build();
+            return chain.proceed(request);
+        };
+    }
+
+    /**
+     * 设置头
+     */
+    private static Interceptor addHeaderInterceptor() {
+        return chain -> {
+            Request.Builder builder = chain.request().newBuilder()
+                    .header("token", "")
+                    .method(chain.request().method(), chain.request().body());
+
+            Request request = builder.build();
+            return chain.proceed(request);
+        };
     }
 }
 

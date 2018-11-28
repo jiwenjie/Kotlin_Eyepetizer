@@ -1,4 +1,4 @@
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "DEPRECATED_IDENTITY_EQUALS", "IMPLICIT_CAST_TO_ANY")
 
 package com.example.root.kotlin_eyepetizer
 
@@ -27,17 +27,17 @@ fun <T> Observable<T>.ioMain(): Observable<T> {
 fun durationFormat(duration: Long?): String {
     val minute = duration!! / 60
     val second = duration % 60
-    if (minute <= 9) {
+    return if (minute <= 9) {
         if (second <= 9) {
-            return "0${minute}' 0${second}''"
+            "0$minute' 0$second''"
         } else {
-            return "0${minute}' ${second}''"
+            "0$minute' $second''"
         }
     } else {
         if (second <= 9) {
-            return "${minute}' 0${second}''"
+            "$minute' 0$second''"
         } else {
-            return "${minute}' ${second}''"
+            "$minute' $second''"
         }
     }
 }
@@ -58,13 +58,13 @@ fun timeFormat(time: Long): String {
             // 表示是 今天
             val hours = timeCalendar.get(Calendar.HOUR_OF_DAY)
             val minutes = timeCalendar.get(Calendar.MINUTE)
-            return "${if (hours < 10) "0" + hours else hours}:${if (minutes < 10) "0" + minutes else minutes}"
+            return "${if (hours < 10) "0$hours" else hours}:${if (minutes < 10) "0$minutes" else minutes}"
         }
     }
     val year = timeCalendar.get(Calendar.YEAR)
     val month = timeCalendar.get(Calendar.MONTH)
     val day = timeCalendar.get(Calendar.DAY_OF_MONTH)
-    return "${year} / ${if (month < 10) "0" + month else month} / ${if (day < 10) "0" + day else day}"
+    return "$year / ${if (month < 10) "0$month" else month} / ${if (day < 10) "0$day" else day}"
 }
 
 /**

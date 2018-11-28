@@ -1,4 +1,4 @@
-package com.example.root.kotlin_eyepetizer.utils
+package com.example.baselibrary.utils
 
 import android.annotation.SuppressLint
 import android.app.ActivityManager
@@ -80,7 +80,6 @@ class AppUtils private constructor() {
             e.printStackTrace()
             null
          }
-
       }
 
       /**
@@ -111,10 +110,8 @@ class AppUtils private constructor() {
          } catch (e: Exception) {
             e.printStackTrace()
          }
-
          return ""
       }
-
 
       /**
        * 获取设备的可用内存大小
@@ -130,7 +127,6 @@ class AppUtils private constructor() {
          // 返回当前系统的可用内存
          return (mi.availMem / (1024 * 1024)).toInt()
       }
-
 
       fun getMobileModel(): String {
          var model: String? = Build.MODEL

@@ -12,9 +12,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
 import com.example.baselibrary.ActivityController;
 import com.example.baselibrary.PermissionListener;
+import com.example.multiple_status_view.MultipleStatusView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +29,11 @@ import java.util.List;
 public abstract class BaseMvpActivity<V extends BaseMvpViewImpl, P extends BaseMvpPresenter<V>>
         extends AppCompatActivity {
 
-   private static final int PERMISSION_REQUEST_CODE = 0X10000000;
+   private static final int PERMISSION_REQUEST_CODE = 0;
    private PermissionListener permissionListener;
    protected P mPresenter;
+   /** 点击重试的监听 **/
+   protected View.OnClickListener listener;
 
    @TargetApi(21)
    @Override
@@ -57,6 +59,8 @@ public abstract class BaseMvpActivity<V extends BaseMvpViewImpl, P extends BaseM
       /* 注册 lifecycle */
       if (mPresenter != null) getLifecycle().addObserver(mPresenter);
       initActivity(savedInstanceState);
+      if (mLayoutStatusView != null) mLayoutStatusView.setOnClickListener(listener = view -> loadData());
+      loadData();
       setListener();
    }
 
@@ -72,9 +76,16 @@ public abstract class BaseMvpActivity<V extends BaseMvpViewImpl, P extends BaseM
 
    protected abstract P initPresenter();
 
+   protected abstract void loadData();
+
    protected boolean enableTransparentStatus() {
       return false;
    }
+
+    /**
+     * 多种状态的 View 切换
+     */
+    protected MultipleStatusView mLayoutStatusView;
 
    protected void setListener() {
 

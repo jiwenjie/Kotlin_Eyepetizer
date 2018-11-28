@@ -17,6 +17,9 @@ import java.lang.reflect.Field
  */
 object TabLayoutHelper {
 
+   /**
+    * 会造成点击区域变小
+    */
    @SuppressLint("ObsoleteSdkInt")
    fun setUpIndicatorWidth(tabLayout: TabLayout) {
       val tabLayoutClass = tabLayout.javaClass
@@ -49,9 +52,7 @@ object TabLayoutHelper {
       } catch (e: IllegalAccessException) {
          e.printStackTrace()
       }
-
    }
-
 }
 
 

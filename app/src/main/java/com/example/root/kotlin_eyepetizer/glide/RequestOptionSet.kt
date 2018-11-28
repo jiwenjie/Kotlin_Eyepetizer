@@ -10,7 +10,7 @@ import com.example.root.kotlin_eyepetizer.R
  *  desc:
  *  version:1.0
  */
-object RequestOptions {
+object RequestOptionSet {
 
     fun getRequestOptions() : RequestOptions {
         return RequestOptions()
