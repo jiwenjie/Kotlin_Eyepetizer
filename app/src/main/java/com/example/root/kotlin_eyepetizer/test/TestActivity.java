@@ -8,7 +8,7 @@ import com.example.baselibrary.utils.ToastUtils;
 import com.example.baselibrary.views.BaseMvpActivity;
 import com.example.baselibrary.views.BaseMvpPresenter;
 import com.example.root.kotlin_eyepetizer.R;
-import com.example.root.kotlin_eyepetizer.base.IBaseView;
+import com.example.root.kotlin_eyepetizer.basic.base.IBaseView;
 
 import java.util.List;
 

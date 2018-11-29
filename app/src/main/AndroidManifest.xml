@@ -41,7 +41,7 @@
         </activity>
         <!--设置 MainActivity 为首页活动部分 -->
         <activity
-            android:name=".activity.MainActivity"
+            android:name="com.example.root.kotlin_eyepetizer.ui.activity.MainActivity"
             android:screenOrientation="portrait" />
 
         <!--测试专用-->
@@ -60,27 +60,27 @@
 
         <!--关于-->
         <activity
-            android:name=".activity.AboutActivity"
+            android:name="com.example.root.kotlin_eyepetizer.ui.activity.AboutActivity"
             android:screenOrientation="portrait" />
 
         <!--我的主页-->
         <activity
-            android:name=".activity.ProfileHomePageActivity"
+            android:name="com.example.root.kotlin_eyepetizer.ui.activity.ProfileHomePageActivity"
             android:screenOrientation="portrait" />
 
         <!--观看记录-->
         <activity
-            android:name=".activity.WatchHistoryActivity"
+            android:name="com.example.root.kotlin_eyepetizer.ui.activity.WatchHistoryActivity"
             android:screenOrientation="portrait" />
 
         <!--视频详情页面-->
         <activity
-            android:name=".activity.VideoDetailActivity"
+            android:name="com.example.root.kotlin_eyepetizer.ui.activity.VideoDetailActivity"
             android:screenOrientation="portrait" />
 
         <!--具体到每一个分类的列表活动-->
         <activity
-            android:name=".activity.CategoryListActivity"
+            android:name="com.example.root.kotlin_eyepetizer.ui.activity.CategoryListActivity"
             android:screenOrientation="portrait" />
 
     </application>

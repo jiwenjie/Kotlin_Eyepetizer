@@ -1,6 +1,6 @@
 package com.example.root.kotlin_eyepetizer.utils
 
-import com.example.root.kotlin_eyepetizer.base.BaseScheduler
+import com.example.root.kotlin_eyepetizer.basic.base.BaseScheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
