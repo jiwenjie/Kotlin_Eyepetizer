@@ -7,7 +7,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
-import com.example.root.kotlin_eyepetizer.activity.MainActivity
+import com.example.root.kotlin_eyepetizer.ui.activity.MainActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 
 /**
