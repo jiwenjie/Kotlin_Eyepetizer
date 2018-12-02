@@ -13,7 +13,7 @@ import com.example.root.kotlin_eyepetizer.R
 import com.example.root.kotlin_eyepetizer.ui.activity.VideoDetailActivity
 import com.example.root.kotlin_eyepetizer.mvp.bean.HomeBean
 import com.example.root.kotlin_eyepetizer.basic.durationFormat
-import com.example.root.kotlin_eyepetizer.glide.RequestOptionSet
+import com.example.root.kotlin_eyepetizer.glide.GlideApplyOptions
 import kotlinx.android.synthetic.main.item_category_detail.view.*
 
 /**
@@ -36,7 +36,7 @@ class CategoryDetailAdapter(context: Context, dataList: ArrayList<HomeBean.Issue
       // 加载封页图
       Glide.with(mContext)
               .load(cover)
-              .apply(RequestOptionSet.getRequestOptions())
+              .apply(GlideApplyOptions.getRequestOptions())
               .transition(DrawableTransitionOptions().crossFade())
               .into(itemView!!.iv_image)
       itemView.tv_title.text = itemData?.title?:""

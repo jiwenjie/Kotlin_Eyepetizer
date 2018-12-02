@@ -10,11 +10,17 @@ import com.example.root.kotlin_eyepetizer.R
  *  desc:
  *  version:1.0
  */
-object RequestOptionSet {
+object GlideApplyOptions {
 
     fun getRequestOptions() : RequestOptions {
         return RequestOptions()
                .placeholder(R.drawable.placeholder_banner)
+    }
+
+    fun getRequestDefaultAvatar(): RequestOptions {
+        return RequestOptions()
+                .placeholder(R.mipmap.default_avatar)
+                .circleCrop()
     }
 
 }

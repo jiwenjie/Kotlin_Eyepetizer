@@ -14,7 +14,7 @@ import com.example.root.kotlin_eyepetizer.R
 import com.example.root.kotlin_eyepetizer.ui.activity.CategoryListActivity
 import com.example.root.kotlin_eyepetizer.basic.api.Constant
 import com.example.root.kotlin_eyepetizer.mvp.bean.CategoryBean
-import com.example.root.kotlin_eyepetizer.glide.RequestOptionSet
+import com.example.root.kotlin_eyepetizer.glide.GlideApplyOptions
 import kotlinx.android.synthetic.main.item_category.view.*
 
 /**
@@ -44,7 +44,7 @@ class CategoryAdapter(context: Context, dataList: ArrayList<CategoryBean>) : Bas
 
       Glide.with(mContext)
               .load(data.bgPicture)
-              .apply(RequestOptionSet.getRequestOptions())
+              .apply(GlideApplyOptions.getRequestOptions())
               .transition(DrawableTransitionOptions().crossFade())
               .thumbnail(0.5f)
               .into(itemView.iv_category)

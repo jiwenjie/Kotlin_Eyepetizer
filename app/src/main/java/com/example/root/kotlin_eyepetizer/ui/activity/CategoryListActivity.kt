@@ -16,7 +16,7 @@ import com.example.root.kotlin_eyepetizer.basic.api.Constant
 import com.example.root.kotlin_eyepetizer.mvp.bean.CategoryBean
 import com.example.root.kotlin_eyepetizer.mvp.bean.HomeBean
 import com.example.root.kotlin_eyepetizer.mvp.contract.CategoryDetailContract
-import com.example.root.kotlin_eyepetizer.glide.RequestOptionSet
+import com.example.root.kotlin_eyepetizer.glide.GlideApplyOptions
 import com.example.root.kotlin_eyepetizer.mvp.presenter.CategoryDetailListPresenter
 import com.example.root.kotlin_eyepetizer.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_category_list.*
@@ -57,7 +57,7 @@ class CategoryListActivity : BaseMvpActivity<CategoryDetailContract.CategoryDeta
       //加载 headerImage
       Glide.with(this)
               .load(categoryData?.headerImage)
-              .apply(RequestOptionSet.getRequestOptions())
+              .apply(GlideApplyOptions.getRequestOptions())
               .into(activity_category_image)
 
       tv_category_desc.text = "#${categoryData?.description}#"
