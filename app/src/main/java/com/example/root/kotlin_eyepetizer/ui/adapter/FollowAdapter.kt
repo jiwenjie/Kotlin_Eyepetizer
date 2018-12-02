@@ -10,7 +10,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.baselibrary.adapter.BaseHeaderFooterRecyclerAdapter
 import com.example.root.kotlin_eyepetizer.R
 import com.example.root.kotlin_eyepetizer.mvp.bean.HomeBean
-import com.example.root.kotlin_eyepetizer.glide.RequestOptionSet
+import com.example.root.kotlin_eyepetizer.glide.GlideApplyOptions
 import kotlinx.android.synthetic.main.item_follow.view.*
 
 /**
@@ -37,7 +37,7 @@ class FollowAdapter(context: Context, dataList: ArrayList<HomeBean.Issue.Item>?)
 
         Glide.with(mContext)
             .load(headerData?.icon)
-            .apply(RequestOptionSet.getRequestOptions())
+            .apply(GlideApplyOptions.getRequestOptions())
             .transition(DrawableTransitionOptions().crossFade())
             .into(itemView.iv_avatar)
 

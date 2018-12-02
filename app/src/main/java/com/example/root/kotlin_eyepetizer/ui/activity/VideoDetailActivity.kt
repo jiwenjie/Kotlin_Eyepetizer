@@ -12,6 +12,12 @@ import android.support.v7.app.AppCompatActivity
  */
 class VideoDetailActivity : AppCompatActivity() {
 
+   companion object {
+      const val IMG_TRANSITION = "IMG_TRANSITION"
+      const val TRANSITION = "TRANSITION"
+   }
+
+
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
    }

@@ -32,14 +32,12 @@ class IndexPresenter(view: IndexContract.IndexView) : BaseMvpPresenter<IndexCont
                     //过滤掉 Banner2 (包含广告等不需要的 Type 类型)，具体需要查看接口数据分析
                     val bannerItemList = homeBean.issueList[0].itemList
                     bannerItemList.filter {
-                        it.type == "banner2" || it.type == "horizontalScrollCard"
+                        it.type == "banner2" || it.type == "textHeader"
                     }.forEach {
                         // 移除
                         bannerItemList.remove(it)
                     }
-
                     bannerHomeBean = homeBean     //记录第一页市当作 banner 数据
-
                     //根据 nextPageUrl 请求下一页数据
                     mModel.loadMord(homeBean.nextPageUrl)
                 }
@@ -51,17 +49,15 @@ class IndexPresenter(view: IndexContract.IndexView) : BaseMvpPresenter<IndexCont
                         val newBannerItemList = it.issueList[0].itemList
 
                         newBannerItemList.filter { item ->
-                            item.type == "banner2" || item.type == "horizontalScrollCard"
+                            item.type == "banner2" || item.type == "textHeader"
                         }.forEach { item ->
                             //移除 item
                             newBannerItemList.remove(item)
                         }
                         // 重新赋值 Banner 长度
                         bannerHomeBean!!.issueList[0].count = bannerHomeBean!!.issueList[0].itemList.size
-
                         // 赋值过滤后的数据 + banner 数据
                         bannerHomeBean?.issueList!![0].itemList.addAll(newBannerItemList)
-
                         setHomeData(bannerHomeBean!!)
                     }
                 }, {
@@ -79,34 +75,26 @@ class IndexPresenter(view: IndexContract.IndexView) : BaseMvpPresenter<IndexCont
     override fun loadMoreData() {
         addSubscription(nextPageUrl.let {
             mModel.loadMord(it!!)
-                .subscribe({1
-                    
-                }, {
+                .subscribe({ homeBean ->
+                    mView?.apply {
+                        // 过滤掉 Banner2 (包含广告等不需要的 type)
+                        val newItemList = homeBean.issueList[0].itemList
 
+                        newItemList.filter { item ->
+                            item.type == "banner2" || item.type == "textHeader"
+                        }.forEach {
+                            // 移除 item
+                            newItemList.remove(it)
+                        }
+                        nextPageUrl = homeBean.nextPageUrl
+                        setMoreData(newItemList)
+                    }
+                }, {
+                    mView?.apply {
+                        showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                    }
                 })
         })
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
