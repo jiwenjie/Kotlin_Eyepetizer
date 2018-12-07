@@ -2,6 +2,8 @@ package com.example.root.kotlin_eyepetizer.test;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.baselibrary.PermissionListener;
 import com.example.baselibrary.utils.ToastUtils;
@@ -60,6 +62,15 @@ public class TestActivity extends BaseMvpActivity<IBaseView, BaseMvpPresenter<IB
 
    @Override
    protected void loadData() {
+
+      TextView textView = new TextView(getApplicationContext());
+      textView.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+
+         }
+      });
+
       Toast.makeText(getApplicationContext(), "请求数据成功", Toast.LENGTH_SHORT).show();
    }
 

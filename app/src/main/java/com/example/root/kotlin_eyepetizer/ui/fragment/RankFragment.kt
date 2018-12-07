@@ -5,11 +5,11 @@ import android.support.v7.widget.LinearLayoutManager
 import com.example.baselibrary.utils.ErrorStatus
 import com.example.baselibrary.utils.ToastUtils
 import com.example.root.kotlin_eyepetizer.R
-import com.example.root.kotlin_eyepetizer.ui.adapter.CategoryDetailAdapter
 import com.example.root.kotlin_eyepetizer.basic.base.BaseAppMvpFragment
 import com.example.root.kotlin_eyepetizer.mvp.bean.HomeBean
 import com.example.root.kotlin_eyepetizer.mvp.contract.RankContract
 import com.example.root.kotlin_eyepetizer.mvp.presenter.RankPresenter
+import com.example.root.kotlin_eyepetizer.ui.adapter.CategoryDetailAdapter
 import kotlinx.android.synthetic.main.fragment_rank.*
 
 /**
@@ -48,7 +48,7 @@ class RankFragment : BaseAppMvpFragment(), RankContract.View {
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
         mRecyclerView.adapter = mAdapter
 
-        mLayoutStatusView =multipleStatusView
+        mLayoutStatusView = multipleStatusView
     }
 
     override fun lazyLoad() {
@@ -58,24 +58,24 @@ class RankFragment : BaseAppMvpFragment(), RankContract.View {
     }
 
     override fun showLoading() {
-        multipleStatusView.showLoading()
+        mLayoutStatusView?.showLoading()
     }
 
     override fun dismissLoading() {
-
+        mLayoutStatusView?.showContent()
     }
 
     override fun setRankList(itemList: ArrayList<HomeBean.Issue.Item>) {
-        multipleStatusView.showContent()
+        mLayoutStatusView?.showContent()
         mAdapter?.addAllData(itemList)
     }
 
     override fun showError(errorMsg: String,errorCode:Int) {
         ToastUtils.showToast(activity!!, errorMsg)
         if (errorCode == ErrorStatus.NETWORK_ERROR) {
-            multipleStatusView.showNoNetwork()
+            mLayoutStatusView?.showNoNetwork()
         } else {
-            multipleStatusView.showError()
+            mLayoutStatusView?.showError()
         }
     }
 

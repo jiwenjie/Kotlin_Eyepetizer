@@ -16,9 +16,9 @@ import android.view.ViewGroup
  *  desc:
  *  version:1.0
  */
-abstract class BaseHeaderFooterRecyclerAdapter<T: Any>(context: Context,
-                                                       data: ArrayList<T>? = null) :
-        RecyclerView.Adapter<BaseHeaderFooterRecyclerAdapter.BaseHolder>() {
+abstract class BaseRecyclerAdapter<T: Any>(context: Context,
+                                           data: ArrayList<T>? = null) :
+        RecyclerView.Adapter<BaseRecyclerAdapter.BaseHolder>() {
 
     protected val mContext = context
     var mData = data
@@ -70,7 +70,7 @@ abstract class BaseHeaderFooterRecyclerAdapter<T: Any>(context: Context,
     override fun onBindViewHolder(holder: BaseHolder, position: Int) {
         if (!isHeader(position) && !isFooter(position)) {
             val pos = position - getHeaderSize()
-            convertView(holder.itemView, mData!![pos])
+            convertView(holder.itemView, mData!![pos], pos)
 
             if (mOnItemClickListener != null)
                 holder.itemView.setOnClickListener { v ->
@@ -86,7 +86,7 @@ abstract class BaseHeaderFooterRecyclerAdapter<T: Any>(context: Context,
         }
     }
 
-    abstract fun convertView(itemView: View?, data: T)
+    abstract fun convertView(itemView: View?, data: T, position: Int)
 
     fun addHeader(header: View) {
         headers.put(HEADER + getHeaderSize(), header)

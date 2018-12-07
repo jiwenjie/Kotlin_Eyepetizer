@@ -8,13 +8,13 @@ import android.graphics.Typeface
 import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.example.baselibrary.adapter.BaseHeaderFooterRecyclerAdapter
+import com.example.baselibrary.adapter.BaseRecyclerAdapter
 import com.example.root.kotlin_eyepetizer.App
 import com.example.root.kotlin_eyepetizer.R
-import com.example.root.kotlin_eyepetizer.ui.activity.CategoryListActivity
 import com.example.root.kotlin_eyepetizer.basic.api.Constant
-import com.example.root.kotlin_eyepetizer.mvp.bean.CategoryBean
 import com.example.root.kotlin_eyepetizer.glide.GlideApplyOptions
+import com.example.root.kotlin_eyepetizer.mvp.bean.CategoryBean
+import com.example.root.kotlin_eyepetizer.ui.activity.CategoryListActivity
 import kotlinx.android.synthetic.main.item_category.view.*
 
 /**
@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.item_category.view.*
  *  desc:分类的适配器 (是外部的各种大的分类，不是每个具体分类的列表适配器)
  *  version:1.0
  */
-class CategoryAdapter(context: Context, dataList: ArrayList<CategoryBean>) : BaseHeaderFooterRecyclerAdapter<CategoryBean>(context, dataList) {
+class CategoryAdapter(context: Context, dataList: ArrayList<CategoryBean>) : BaseRecyclerAdapter<CategoryBean>(context, dataList) {
 
    private var textTypeface: Typeface? = null
 
@@ -37,7 +37,7 @@ class CategoryAdapter(context: Context, dataList: ArrayList<CategoryBean>) : Bas
    }
 
    @SuppressLint("SetTextI18n")
-   override fun convertView(itemView: View?, data: CategoryBean) {
+   override fun convertView(itemView: View?, data: CategoryBean, position: Int) {
       itemView!!.tv_category_name.text = "#${data.name}"
       // 设置方正兰亭细黑简体
       itemView.tv_category_name.typeface = textTypeface

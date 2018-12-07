@@ -6,10 +6,10 @@ import com.example.baselibrary.utils.ErrorStatus
 import com.example.baselibrary.utils.ToastUtils
 import com.example.baselibrary.views.BaseMvpFragment
 import com.example.root.kotlin_eyepetizer.R
-import com.example.root.kotlin_eyepetizer.ui.adapter.CategoryAdapter
 import com.example.root.kotlin_eyepetizer.mvp.bean.CategoryBean
 import com.example.root.kotlin_eyepetizer.mvp.contract.CategoryContract
 import com.example.root.kotlin_eyepetizer.mvp.presenter.CategoryPresenter
+import com.example.root.kotlin_eyepetizer.ui.adapter.CategoryAdapter
 import kotlinx.android.synthetic.main.fragment_category.*
 
 /**
@@ -40,7 +40,7 @@ class CategoryFragment : BaseMvpFragment<CategoryContract.CategoryView, Category
 
    override fun initFragment(savedInstanceState: Bundle?) {
       mLayoutStatusView = category_MultipleStatusView
-      category_MultipleStatusView.showContent()
+      mLayoutStatusView.showContent()
 
       mRecyclerView.layoutManager = GridLayoutManager(activity, 2)
       mRecyclerView.adapter = adapter
@@ -59,17 +59,17 @@ class CategoryFragment : BaseMvpFragment<CategoryContract.CategoryView, Category
    override fun showError(errorMsg: String, errorCode: Int) {
       ToastUtils.showToast(activity!!, errorMsg)
       if (errorCode == ErrorStatus.NETWORK_ERROR) {
-         category_MultipleStatusView.showNoNetwork()
+         mLayoutStatusView.showNoNetwork()
       } else {
-         category_MultipleStatusView.showError()
+         mLayoutStatusView.showError()
       }
    }
 
    override fun showLoading() {
-      category_MultipleStatusView.showLoading()
+      mLayoutStatusView.showLoading()
    }
 
    override fun dismissLoading() {
-      category_MultipleStatusView.showContent()
+      mLayoutStatusView.showContent()
    }
 }

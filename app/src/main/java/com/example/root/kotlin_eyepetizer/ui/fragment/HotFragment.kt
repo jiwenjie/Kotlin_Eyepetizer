@@ -60,18 +60,18 @@ class HotFragment : BaseAppMvpFragment(), HotContract.View {
    }
 
    override fun showLoading() {
-      multipleStatusView.showLoading()
+      mLayoutStatusView?.showLoading()
    }
 
    override fun dismissLoading() {
-
+      mLayoutStatusView?.showContent()
    }
 
    /**
     * 设置 TabInfo
     */
    override fun setTabInfo(tabInfoBean: TabInfoBean) {
-      multipleStatusView.showContent()
+      mLayoutStatusView?.showContent()
 
       tabInfoBean.tabInfo.tabList.mapTo(mTabTitleList) { it.name }
       tabInfoBean.tabInfo.tabList.mapTo(mFragmentList) { RankFragment.getInstance(it.apiUrl) }
@@ -82,9 +82,9 @@ class HotFragment : BaseAppMvpFragment(), HotContract.View {
    override fun showError(errorMsg: String, errorCode: Int) {
       ToastUtils.showToast(activity!!, errorMsg)
       if (errorCode == ErrorStatus.NETWORK_ERROR) {
-         multipleStatusView.showNoNetwork()
+         mLayoutStatusView?.showNoNetwork()
       } else {
-         multipleStatusView.showError()
+         mLayoutStatusView?.showError()
       }
    }
 

@@ -6,11 +6,11 @@ import android.support.v7.widget.RecyclerView
 import com.example.baselibrary.utils.ErrorStatus
 import com.example.baselibrary.utils.ToastUtils
 import com.example.root.kotlin_eyepetizer.R
-import com.example.root.kotlin_eyepetizer.ui.adapter.FollowAdapter
 import com.example.root.kotlin_eyepetizer.basic.base.BaseAppMvpFragment
 import com.example.root.kotlin_eyepetizer.mvp.bean.HomeBean
 import com.example.root.kotlin_eyepetizer.mvp.contract.FollowContract
 import com.example.root.kotlin_eyepetizer.mvp.presenter.FollowPresenter
+import com.example.root.kotlin_eyepetizer.ui.adapter.FollowAdapter
 import kotlinx.android.synthetic.main.layout_recyclerview.*
 
 /**
@@ -74,11 +74,11 @@ class FollowFragment : BaseAppMvpFragment(), FollowContract.View {
    }
 
    override fun showLoading() {
-      multipleStatusView.showLoading()
+      mLayoutStatusView?.showLoading()
    }
 
    override fun dismissLoading() {
-      multipleStatusView.showContent()
+      mLayoutStatusView?.showContent()
    }
 
    override fun setFollowInfo(issue: HomeBean.Issue) {
@@ -93,9 +93,9 @@ class FollowFragment : BaseAppMvpFragment(), FollowContract.View {
    override fun showError(errorMsg: String, errorCode: Int) {
       ToastUtils.showToast(activity!!, errorMsg)
       if (errorCode == ErrorStatus.NETWORK_ERROR) {
-         multipleStatusView.showNoNetwork()
+         mLayoutStatusView?.showNoNetwork()
       } else {
-         multipleStatusView.showError()
+         mLayoutStatusView?.showError()
       }
    }
 

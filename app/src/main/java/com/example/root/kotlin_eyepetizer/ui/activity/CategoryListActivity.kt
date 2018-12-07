@@ -11,13 +11,13 @@ import com.bumptech.glide.Glide
 import com.example.baselibrary.utils.ToastUtils
 import com.example.baselibrary.views.BaseMvpActivity
 import com.example.root.kotlin_eyepetizer.R
-import com.example.root.kotlin_eyepetizer.ui.adapter.CategoryDetailAdapter
 import com.example.root.kotlin_eyepetizer.basic.api.Constant
+import com.example.root.kotlin_eyepetizer.glide.GlideApplyOptions
 import com.example.root.kotlin_eyepetizer.mvp.bean.CategoryBean
 import com.example.root.kotlin_eyepetizer.mvp.bean.HomeBean
 import com.example.root.kotlin_eyepetizer.mvp.contract.CategoryDetailContract
-import com.example.root.kotlin_eyepetizer.glide.GlideApplyOptions
 import com.example.root.kotlin_eyepetizer.mvp.presenter.CategoryDetailListPresenter
+import com.example.root.kotlin_eyepetizer.ui.adapter.CategoryDetailAdapter
 import com.example.root.kotlin_eyepetizer.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_category_list.*
 
@@ -105,14 +105,14 @@ class CategoryListActivity : BaseMvpActivity<CategoryDetailContract.CategoryDeta
 
    override fun showError(errorMsg: String) {
       ToastUtils.showToast(this, errorMsg)
-      activity_category_multipleStatusView.showError()
+      mLayoutStatusView.showError()
    }
 
    override fun showLoading() {
-//      activity_category_multipleStatusView.showLoading()
+      mLayoutStatusView.showLoading()
    }
 
    override fun dismissLoading() {
-//      activity_category_multipleStatusView.showContent()
+      mLayoutStatusView.showContent()
    }
 }
