@@ -1,16 +1,19 @@
 package com.example.root.kotlin_eyepetizer.ui.fragment
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.example.baselibrary.utils.ErrorStatus
-import com.example.baselibrary.utils.ToastUtils
 import com.example.baselibrary.views.BaseMvpFragment
 import com.example.root.kotlin_eyepetizer.R
 import com.example.root.kotlin_eyepetizer.mvp.bean.HomeBean
 import com.example.root.kotlin_eyepetizer.mvp.contract.IndexContract
 import com.example.root.kotlin_eyepetizer.mvp.presenter.IndexPresenter
+import com.example.root.kotlin_eyepetizer.ui.activity.SearchActivity
 import com.example.root.kotlin_eyepetizer.ui.adapter.IndexAdapter
 import com.example.root.kotlin_eyepetizer.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.fragment_index.*
@@ -27,7 +30,7 @@ import java.util.*
 
 @Suppress("DEPRECATION")
 class IndexFragment : BaseMvpFragment<IndexContract.IndexView, IndexPresenter>(),
-            IndexContract.IndexView {
+        IndexContract.IndexView {
 
    private var mTitle: String? = null
    private var num: Int = 1   // 表示请求数据的页数
@@ -162,7 +165,14 @@ class IndexFragment : BaseMvpFragment<IndexContract.IndexView, IndexPresenter>()
    }
 
    private fun openSearchActivity() {
-      ToastUtils.showToast(activity!!, "打開搜索頁面")
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+         val options = activity?.let {
+            ActivityOptionsCompat.makeSceneTransitionAnimation(it, iv_search, iv_search.transitionName)
+         }
+         startActivity(Intent(activity, SearchActivity::class.java), options?.toBundle())
+      } else {
+         startActivity(Intent(activity, SearchActivity::class.java))
+      }
    }
 
    private val simpleDateFormat by lazy {
@@ -172,5 +182,4 @@ class IndexFragment : BaseMvpFragment<IndexContract.IndexView, IndexPresenter>()
    fun getColor(colorId: Int): Int {
       return resources.getColor(colorId)
    }
-
 }

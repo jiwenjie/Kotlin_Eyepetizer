@@ -6,13 +6,13 @@ import android.text.TextUtils
 import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.example.baselibrary.adapter.BaseHeaderFooterRecyclerAdapter
+import com.example.baselibrary.adapter.BaseRecyclerAdapter
 import com.example.baselibrary.utils.LogUtils
 import com.example.baselibrary.utils.ToastUtils
 import com.example.root.kotlin_eyepetizer.R
-import com.example.root.kotlin_eyepetizer.mvp.bean.HomeBean
 import com.example.root.kotlin_eyepetizer.basic.durationFormat
 import com.example.root.kotlin_eyepetizer.glide.GlideApplyOptions
+import com.example.root.kotlin_eyepetizer.mvp.bean.HomeBean
 import kotlinx.android.synthetic.main.item_follow_horizontal.view.*
 
 /**
@@ -22,12 +22,12 @@ import kotlinx.android.synthetic.main.item_follow_horizontal.view.*
  *  desc: 关注部分， 水平的 RecyclerViewAdapter
  *  version:1.0
  */
-class FollowHorizontalAdapter(context: Context, categoryList: ArrayList<HomeBean.Issue.Item>) : BaseHeaderFooterRecyclerAdapter<HomeBean.Issue.Item>(context, categoryList) {
+class FollowHorizontalAdapter(context: Context, categoryList: ArrayList<HomeBean.Issue.Item>) : BaseRecyclerAdapter<HomeBean.Issue.Item>(context, categoryList) {
 
     override fun getAdapterResId(): Int = R.layout.item_follow_horizontal
 
     @SuppressLint("CheckResult", "SetTextI18n")
-    override fun convertView(itemView: View?, data: HomeBean.Issue.Item) {
+    override fun convertView(itemView: View?, data: HomeBean.Issue.Item, position: Int) {
         val horezontalItemData = data.data
         Glide.with(mContext)
                 .load(data.data?.cover?.feed)
