@@ -44,7 +44,6 @@ abstract class BaseAppMvpActivity : AppCompatActivity(), EasyPermissions.Permiss
         start()
     }
 
-
     /**
      *  加载布局
      */
@@ -65,7 +64,6 @@ abstract class BaseAppMvpActivity : AppCompatActivity(), EasyPermissions.Permiss
      */
     abstract fun start()
 
-
     /**
      * 打卡软键盘
      */
@@ -83,12 +81,10 @@ abstract class BaseAppMvpActivity : AppCompatActivity(), EasyPermissions.Permiss
         imm.hideSoftInputFromWindow(mEditText.windowToken, 0)
     }
 
-
     override fun onDestroy() {
         super.onDestroy()
         App.getRefWatcher(this)?.watch(this)
     }
-
 
     /**
      * 重写要申请权限的Activity或者Fragment的onRequestPermissionsResult()方法，
@@ -138,7 +134,6 @@ abstract class BaseAppMvpActivity : AppCompatActivity(), EasyPermissions.Permiss
                 .show()
         }
     }
-
 }
 
 

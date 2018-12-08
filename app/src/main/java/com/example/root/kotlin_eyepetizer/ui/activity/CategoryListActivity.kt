@@ -32,7 +32,7 @@ class CategoryListActivity : BaseMvpActivity<CategoryDetailContract.CategoryDeta
         CategoryDetailListPresenter>(), CategoryDetailContract.CategoryDetailView {
 
    /**
-    * 注意尝试下这里使用 val 可不可以，还是必须使用 var 才行
+    * 注意尝试下这里使用 val 可不可以，还是必须使用 var 才行, val 没问题
     */
    private val itemList by lazy { ArrayList<HomeBean.Issue.Item>() }
    private val adapter by lazy { CategoryDetailAdapter(this, itemList) }

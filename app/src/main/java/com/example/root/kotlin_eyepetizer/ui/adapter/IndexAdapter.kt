@@ -33,8 +33,7 @@ import kotlinx.android.synthetic.main.fragment_index_header_item.view.*
  *  version:1.0
  */
 @Suppress("NAME_SHADOWING")
-class IndexAdapter(context: Context)
-    : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class IndexAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var mContext: Context? = context
     var beanList = ArrayList<HomeBean.Issue.Item>()

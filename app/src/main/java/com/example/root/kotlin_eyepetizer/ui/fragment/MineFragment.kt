@@ -7,10 +7,10 @@ import com.example.baselibrary.utils.ToastUtils
 import com.example.baselibrary.views.BaseMvpFragment
 import com.example.baselibrary.views.BaseMvpPresenter
 import com.example.root.kotlin_eyepetizer.R
+import com.example.root.kotlin_eyepetizer.basic.base.IBaseView
 import com.example.root.kotlin_eyepetizer.ui.activity.AboutActivity
 import com.example.root.kotlin_eyepetizer.ui.activity.ProfileHomePageActivity
 import com.example.root.kotlin_eyepetizer.ui.activity.WatchHistoryActivity
-import com.example.root.kotlin_eyepetizer.basic.base.IBaseView
 import com.example.root.kotlin_eyepetizer.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.fragment_mine.*
 
@@ -50,6 +50,7 @@ class MineFragment : BaseMvpFragment<IBaseView, BaseMvpPresenter<IBaseView>>(), 
       tv_mine_attention.setOnClickListener(this)
       tv_mine_cache.setOnClickListener(this)
       tv_watch_history.setOnClickListener(this)
+      tv_more_function.setOnClickListener(this)
       tv_feedback.setOnClickListener(this)
    }
 
@@ -83,6 +84,7 @@ class MineFragment : BaseMvpFragment<IBaseView, BaseMvpPresenter<IBaseView>>(), 
          v?.id == R.id.tv_mine_attention -> ToastUtils.showToast(activity!!, "我的关注")
          v?.id == R.id.tv_mine_cache -> ToastUtils.showToast(activity!!, "我的缓存")
          v?.id == R.id.tv_watch_history -> startActivity(Intent(activity, WatchHistoryActivity::class.java))
+         v?.id == R.id.tv_more_function -> ToastUtils.showToast(activity!!, "更多功能")
          v?.id == R.id.tv_feedback -> ToastUtils.showToast(activity!!, "意见反馈")
       }
    }

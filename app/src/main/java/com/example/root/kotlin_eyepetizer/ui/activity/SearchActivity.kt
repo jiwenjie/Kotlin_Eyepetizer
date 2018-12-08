@@ -35,11 +35,13 @@ import kotlinx.android.synthetic.main.activity_search.*
  *  desc:搜索活動
  *  version:1.0
  */
-class SearchActivity : BaseMvpActivity<SearchContract.SearchView, SearchPresenter>(), SearchContract.SearchView {
 
-   private var itemList = ArrayList<HomeBean.Issue.Item>()
+class SearchActivity : BaseMvpActivity<SearchContract.SearchView, SearchPresenter>(),
+        SearchContract.SearchView {
 
-   private val mResultAdapter by lazy { CategoryDetailAdapter(applicationContext, itemList) }
+   private var itemList =  ArrayList<HomeBean.Issue.Item>()
+   private val adapter by lazy { CategoryDetailAdapter(this, itemList) }
+
    private var mHotWordAdapter: HotKeywordsAdapter? = null
 
    private var mTextTypeface: Typeface? = null
@@ -57,7 +59,6 @@ class SearchActivity : BaseMvpActivity<SearchContract.SearchView, SearchPresente
 
    override fun initActivity(savedInstanceState: Bundle?) {
       enterAndExitAnim()   // 设置进出场的动画
-
       // 状态栏的透明和间距处理
       StatusBarUtil.darkMode(this)
       StatusBarUtil.setPaddingSmart(this, toolbar)
@@ -65,7 +66,7 @@ class SearchActivity : BaseMvpActivity<SearchContract.SearchView, SearchPresente
       tv_hot_search_words.typeface = mTextTypeface
       // 初始化查询结果的 RecyclerView
       mRecyclerView_result.layoutManager = LinearLayoutManager(this)
-      mRecyclerView_result.adapter = mResultAdapter
+      mRecyclerView_result.adapter = adapter
 
       // 实现滑动页面的自动加载
       mRecyclerView_result.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -228,8 +229,7 @@ class SearchActivity : BaseMvpActivity<SearchContract.SearchView, SearchPresente
       tv_search_count.visibility = View.VISIBLE
       tv_search_count.text = String.format(resources.getString(R.string.search_result_count), keyWords, issue.total)
 
-      itemList = issue.itemList
-      mResultAdapter.addAllData(issue.itemList)
+      adapter.addAllData(issue.itemList)
    }
 
    /**
@@ -239,7 +239,7 @@ class SearchActivity : BaseMvpActivity<SearchContract.SearchView, SearchPresente
       ToastUtils.showToast(applicationContext!!, "抱歉，没有找到相匹配的内容")
       hideHotWordView()
       tv_search_count.visibility = View.GONE
-      mLayoutStatusView?.showEmpty()
+      multipleStatusView?.showEmpty()
    }
 
    /**
@@ -261,18 +261,18 @@ class SearchActivity : BaseMvpActivity<SearchContract.SearchView, SearchPresente
    override fun showError(errorMsg: String, errorCode: Int) {
       ToastUtils.showToast(applicationContext!!, errorMsg)
       if (errorCode == ErrorStatus.NETWORK_ERROR) {
-         mLayoutStatusView?.showNoNetwork()
+         multipleStatusView?.showNoNetwork()
       } else {
-         mLayoutStatusView?.showContent()
+         multipleStatusView?.showContent()
       }
    }
 
    override fun showLoading() {
-      mLayoutStatusView?.showLoading()
+      multipleStatusView?.showLoading()
    }
 
    override fun dismissLoading() {
-      mLayoutStatusView?.showContent()
+      multipleStatusView?.showContent()
    }
 
    override fun getLayoutId(): Int = R.layout.activity_search

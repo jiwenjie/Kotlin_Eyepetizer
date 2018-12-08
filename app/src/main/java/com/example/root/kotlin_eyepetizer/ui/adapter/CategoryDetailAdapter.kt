@@ -34,14 +34,14 @@ class CategoryDetailAdapter(context: Context, dataList: ArrayList<HomeBean.Issue
 
    @SuppressLint("SetTextI18n")
    override fun convertView(itemView: View?, data: HomeBean.Issue.Item, position: Int) {
-
       /**
        * 设置 item 的间隔（列表第一个和最后一个的 marginTop 和 marginBottom 设置间距（中间的 item 合并在一起））
        */
       if (position == mData!!.size - 1) {
-         (itemView?.layoutParams as RecyclerView.LayoutParams).bottomMargin = ScreenUtils.dip2px(mContext, 1f)
+         (itemView?.layoutParams as RecyclerView.LayoutParams).topMargin = ScreenUtils.dip2px(mContext, 1f)
+         (itemView.layoutParams as RecyclerView.LayoutParams).bottomMargin = ScreenUtils.dip2px(mContext, 8f)
       } else {
-         (itemView?.layoutParams as RecyclerView.LayoutParams).bottomMargin = 0
+         (itemView?.layoutParams as RecyclerView.LayoutParams).topMargin = ScreenUtils.dip2px(mContext, 1f)
       }
 
       val itemData = data.data
