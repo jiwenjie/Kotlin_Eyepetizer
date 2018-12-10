@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.example.baselibrary.utils
+package com.example.baselibrary.baseutils
 
 import android.app.Activity
 import android.content.Context
@@ -73,7 +73,9 @@ object ScreenUtils {
 
     fun getStatusBarColor(context: Context, color: String) {
         val statusBarView = View(context)
-        val lp = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getStatusBarHeight(context))
+        val lp = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+            getStatusBarHeight(context)
+        )
         statusBarView.setBackgroundColor(Color.parseColor(color))
         val contentView = (context as Activity).findViewById<ViewGroup>(android.R.id.content)
         contentView.addView(statusBarView, lp)
@@ -83,7 +85,7 @@ object ScreenUtils {
         tabLayout.post {
             try {
                 val mTabStrip = tabLayout.getChildAt(0) as LinearLayout
-                val dpGap = ScreenUtils.dip2px(tabLayout.context, padGap)
+                val dpGap = dip2px(tabLayout.context, padGap)
                 for (i in 0 until mTabStrip.childCount) {
                     val tabView = mTabStrip.getChildAt(i)
                     val mTextViewField = tabView.javaClass.getDeclaredField("mTextView")
@@ -116,8 +118,14 @@ object ScreenUtils {
         val frame = Rect()
         context.window.decorView.getWindowVisibleDisplayFrame(frame)
 
-        val bp = if (withStatusBar) Bitmap.createBitmap(bitmap, 0, 0, getScreenWidth(context), getScreenHeight(context))
-        else Bitmap.createBitmap(bitmap, 0, frame.top, getScreenWidth(context), getScreenHeight(context))
+        val bp = if (withStatusBar) Bitmap.createBitmap(bitmap, 0, 0,
+            getScreenWidth(context),
+            getScreenHeight(context)
+        )
+        else Bitmap.createBitmap(bitmap, 0, frame.top,
+            getScreenWidth(context),
+            getScreenHeight(context)
+        )
 
         view.destroyDrawingCache()
         return bp

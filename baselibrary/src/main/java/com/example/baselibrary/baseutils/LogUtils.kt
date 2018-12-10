@@ -1,4 +1,4 @@
-package com.example.baselibrary.utils
+package com.example.baselibrary.baseutils
 
 import android.util.Log
 
@@ -33,35 +33,50 @@ object LogUtils {
         if (!isDebuggable())
             return
         getMethodName(Throwable())
-        Log.e(className, createLog(msg))
+        Log.e(
+            className,
+            createLog(msg)
+        )
     }
 
     fun w(msg: String) {
         if (!isDebuggable())
             return
         getMethodName(Throwable())
-        Log.w(className, createLog(msg))
+        Log.w(
+            className,
+            createLog(msg)
+        )
     }
 
     fun i(msg: String) {
         if (!isDebuggable())
             return
         getMethodName(Throwable())
-        Log.i(className, createLog(msg))
+        Log.i(
+            className,
+            createLog(msg)
+        )
     }
 
     fun d(msg: String) {
         if (!isDebuggable())
             return
         getMethodName(Throwable())
-        Log.d(className, createLog(msg))
+        Log.d(
+            className,
+            createLog(msg)
+        )
     }
 
     fun v(msg: String) {
         if (!isDebuggable())
             return
         getMethodName(Throwable())
-        Log.v(className, createLog(msg))
+        Log.v(
+            className,
+            createLog(msg)
+        )
     }
 }
 

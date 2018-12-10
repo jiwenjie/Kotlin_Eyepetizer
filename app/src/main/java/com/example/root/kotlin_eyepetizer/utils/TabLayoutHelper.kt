@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.support.design.widget.TabLayout
 import android.widget.LinearLayout
-import com.example.baselibrary.utils.ScreenUtils
+import com.example.baselibrary.baseutils.ScreenUtils
 import com.example.root.kotlin_eyepetizer.App
 import java.lang.reflect.Field
 

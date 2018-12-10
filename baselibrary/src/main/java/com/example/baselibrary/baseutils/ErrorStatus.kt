@@ -1,4 +1,4 @@
-package com.example.baselibrary.utils
+package com.example.baselibrary.baseutils
 
 /**
  *  author:Jiwenjie

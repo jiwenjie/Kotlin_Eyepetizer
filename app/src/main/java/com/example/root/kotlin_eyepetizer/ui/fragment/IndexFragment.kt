@@ -7,7 +7,7 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import com.example.baselibrary.utils.ErrorStatus
+import com.example.baselibrary.baseutils.ErrorStatus
 import com.example.baselibrary.views.BaseMvpFragment
 import com.example.root.kotlin_eyepetizer.R
 import com.example.root.kotlin_eyepetizer.mvp.bean.HomeBean

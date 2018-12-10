@@ -1,6 +1,6 @@
 package com.example.root.kotlin_eyepetizer.mvp.presenter
 
-import com.example.baselibrary.utils.ExceptionHandle
+import com.example.baselibrary.baseutils.ExceptionHandle
 import com.example.root.kotlin_eyepetizer.basic.base.BasePresenter
 import com.example.root.kotlin_eyepetizer.mvp.contract.RankContract
 import com.example.root.kotlin_eyepetizer.mvp.model.RankModel
@@ -32,7 +32,9 @@ class RankPresenter : BasePresenter<RankContract.View>(), RankContract.Presenter
               }, { throwable ->
                  mRootView?.apply {
                     //处理异常
-                    showError(ExceptionHandle.handleException(throwable),ExceptionHandle.errorCode)
+                    showError(
+                        ExceptionHandle.handleException(throwable),
+                        ExceptionHandle.errorCode)
                  }
               })
       addSubscription(disposable)

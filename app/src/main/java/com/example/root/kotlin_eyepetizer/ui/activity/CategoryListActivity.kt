@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.baselibrary.utils.ToastUtils
+import com.example.baselibrary.baseutils.ToastUtils
 import com.example.baselibrary.views.BaseMvpActivity
 import com.example.root.kotlin_eyepetizer.R
 import com.example.root.kotlin_eyepetizer.basic.api.Constant

@@ -1,7 +1,7 @@
 package com.example.root.kotlin_eyepetizer.mvp.presenter
 
 import android.annotation.SuppressLint
-import com.example.baselibrary.utils.ExceptionHandle
+import com.example.baselibrary.baseutils.ExceptionHandle
 import com.example.baselibrary.views.BaseMvpPresenter
 import com.example.root.kotlin_eyepetizer.mvp.contract.CategoryContract
 import com.example.root.kotlin_eyepetizer.mvp.model.CategoryModel

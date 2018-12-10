@@ -3,7 +3,7 @@ package com.example.root.kotlin_eyepetizer.ui.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.example.baselibrary.utils.ToastUtils
+import com.example.baselibrary.baseutils.ToastUtils
 import com.example.baselibrary.views.BaseMvpFragment
 import com.example.baselibrary.views.BaseMvpPresenter
 import com.example.root.kotlin_eyepetizer.R

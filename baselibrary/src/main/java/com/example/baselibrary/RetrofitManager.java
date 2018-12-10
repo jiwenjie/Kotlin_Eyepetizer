@@ -2,7 +2,7 @@ package com.example.baselibrary;
 
 import android.text.TextUtils;
 import android.util.Log;
-import com.example.baselibrary.utils.AppUtils;
+import com.example.baselibrary.baseutils.AppUtils;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;

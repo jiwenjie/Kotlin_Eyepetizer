@@ -1,4 +1,4 @@
-package com.example.baselibrary.utils
+package com.example.baselibrary.baseutils
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
@@ -95,7 +95,13 @@ object GeneralUtils {
         BitmapFactory.decodeFile(path, options)
         val outWidth = options.outWidth
         val outHeight = options.outHeight
-        options.inSampleSize = calculateInSampleSize(options, rqsWidth, rqsHeight, outWidth, outHeight) *
+        options.inSampleSize = calculateInSampleSize(
+            options,
+            rqsWidth,
+            rqsHeight,
+            outWidth,
+            outHeight
+        ) *
                 compressSize
         options.inJustDecodeBounds = false
         return BitmapFactory.decodeFile(path, options)
@@ -242,7 +248,12 @@ object GeneralUtils {
                 }
                 val selection = "_id=?"
                 val selectionArgs = arrayOf(split[1])
-                return getDataColumn(context, contentUri, selection, selectionArgs)
+                return getDataColumn(
+                    context,
+                    contentUri,
+                    selection,
+                    selectionArgs
+                )
             }
         } else if ("content".equals(uri.scheme, ignoreCase = true)) {// MediaStore
             return getDataColumn(context, uri, null, null)

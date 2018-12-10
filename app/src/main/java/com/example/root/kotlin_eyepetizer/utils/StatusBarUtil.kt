@@ -12,7 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
-import com.example.baselibrary.utils.LogUtils
+import com.example.baselibrary.baseutils.LogUtils
 import java.util.regex.Pattern
 
 /**

@@ -1,4 +1,4 @@
-package com.example.baselibrary.adapter
+package com.example.baselibrary.baseadapters
 
 import android.content.Context
 import android.support.v7.widget.GridLayoutManager
@@ -58,7 +58,13 @@ abstract class BaseRecyclerAdapter<T: Any>(context: Context,
             BaseHolder(headers.get(viewType))
         else if (hasFooter() && footers.get(viewType) != null)
             BaseHolder(footers.get(viewType))
-        else BaseHolder(mInflater.inflate(getAdapterResId(), parent, false))
+        else BaseHolder(
+            mInflater.inflate(
+                getAdapterResId(),
+                parent,
+                false
+            )
+        )
     }
 
     protected open fun getAdapterResId(): Int {

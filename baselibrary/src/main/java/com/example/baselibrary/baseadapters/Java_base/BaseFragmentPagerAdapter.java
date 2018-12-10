@@ -1,4 +1,4 @@
-package com.example.baselibrary.adapter;
+package com.example.baselibrary.baseadapters.Java_base;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;

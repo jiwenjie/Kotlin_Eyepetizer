@@ -2,9 +2,9 @@ package com.example.root.kotlin_eyepetizer.ui.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import com.example.baselibrary.adapter.BaseFragmentPagerAdapter
-import com.example.baselibrary.utils.ErrorStatus
-import com.example.baselibrary.utils.ToastUtils
+import com.example.baselibrary.baseadapters.Java_base.BaseFragmentPagerAdapter
+import com.example.baselibrary.baseutils.ErrorStatus
+import com.example.baselibrary.baseutils.ToastUtils
 import com.example.root.kotlin_eyepetizer.R
 import com.example.root.kotlin_eyepetizer.basic.base.BaseAppMvpFragment
 import com.example.root.kotlin_eyepetizer.mvp.bean.TabInfoBean
@@ -75,7 +75,11 @@ class HotFragment : BaseAppMvpFragment(), HotContract.View {
 
       tabInfoBean.tabInfo.tabList.mapTo(mTabTitleList) { it.name }
       tabInfoBean.tabInfo.tabList.mapTo(mFragmentList) { RankFragment.getInstance(it.apiUrl) }
-      mHotViewPager.adapter = BaseFragmentPagerAdapter(childFragmentManager, mFragmentList, mTabTitleList)
+      mHotViewPager.adapter = BaseFragmentPagerAdapter(
+          childFragmentManager,
+          mFragmentList,
+          mTabTitleList
+      )
       mHotTabLayout.setupWithViewPager(mHotViewPager)
    }
 

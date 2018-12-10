@@ -2,8 +2,8 @@ package com.example.root.kotlin_eyepetizer.ui.fragment
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import com.example.baselibrary.utils.ErrorStatus
-import com.example.baselibrary.utils.ToastUtils
+import com.example.baselibrary.baseutils.ErrorStatus
+import com.example.baselibrary.baseutils.ToastUtils
 import com.example.root.kotlin_eyepetizer.R
 import com.example.root.kotlin_eyepetizer.basic.base.BaseAppMvpFragment
 import com.example.root.kotlin_eyepetizer.mvp.bean.HomeBean

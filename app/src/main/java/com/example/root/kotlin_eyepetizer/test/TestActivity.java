@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.baselibrary.PermissionListener;
-import com.example.baselibrary.utils.ToastUtils;
+import com.example.baselibrary.baseutils.ToastUtils;
 import com.example.baselibrary.views.BaseMvpActivity;
 import com.example.baselibrary.views.BaseMvpPresenter;
 import com.example.root.kotlin_eyepetizer.R;
@@ -15,7 +15,7 @@ import com.example.root.kotlin_eyepetizer.basic.base.IBaseView;
 import java.util.List;
 
 //import android.widget.Toast;
-//import com.example.baselibrary.utils.ToastUtils;
+//import com.example.baselibrary.baseutils.ToastUtils;
 
 /**
  * author:Jiwenjie

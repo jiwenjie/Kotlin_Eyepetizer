@@ -7,7 +7,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.example.baselibrary.adapter.BaseRecyclerAdapter
+import com.example.baselibrary.baseadapters.BaseRecyclerAdapter
 import com.example.root.kotlin_eyepetizer.R
 import com.example.root.kotlin_eyepetizer.glide.GlideApplyOptions
 import com.example.root.kotlin_eyepetizer.mvp.bean.HomeBean

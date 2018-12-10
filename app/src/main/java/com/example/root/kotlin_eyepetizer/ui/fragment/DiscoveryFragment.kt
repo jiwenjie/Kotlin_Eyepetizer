@@ -2,7 +2,7 @@ package com.example.root.kotlin_eyepetizer.ui.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import com.example.baselibrary.adapter.BaseFragmentPagerAdapter
+import com.example.baselibrary.baseadapters.Java_base.BaseFragmentPagerAdapter
 import com.example.root.kotlin_eyepetizer.R
 import com.example.root.kotlin_eyepetizer.basic.base.BaseAppMvpFragment
 import com.example.root.kotlin_eyepetizer.utils.StatusBarUtil
@@ -50,7 +50,11 @@ class DiscoveryFragment : BaseAppMvpFragment() {
       /**
        * getSupportFragmentManager() 替换为getChildFragmentManager()
        */
-      mHotViewPager.adapter = BaseFragmentPagerAdapter(childFragmentManager, fragments, tabList)
+      mHotViewPager.adapter = BaseFragmentPagerAdapter(
+          childFragmentManager,
+          fragments,
+          tabList
+      )
       mHotTabLayout.setupWithViewPager(mHotViewPager)
       TabLayoutHelper.setUpIndicatorWidth(mHotTabLayout)
    }

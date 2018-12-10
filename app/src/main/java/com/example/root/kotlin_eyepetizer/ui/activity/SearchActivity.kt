@@ -12,12 +12,13 @@ import android.transition.TransitionInflater
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
-import com.example.baselibrary.utils.ErrorStatus
-import com.example.baselibrary.utils.GeneralUtils
-import com.example.baselibrary.utils.ToastUtils
+import com.example.baselibrary.baseutils.ErrorStatus
+import com.example.baselibrary.baseutils.GeneralUtils
+import com.example.baselibrary.baseutils.ToastUtils
 import com.example.baselibrary.views.BaseMvpActivity
 import com.example.root.kotlin_eyepetizer.App
 import com.example.root.kotlin_eyepetizer.R
+import com.example.root.kotlin_eyepetizer.R.id.*
 import com.example.root.kotlin_eyepetizer.mvp.bean.HomeBean
 import com.example.root.kotlin_eyepetizer.mvp.contract.SearchContract
 import com.example.root.kotlin_eyepetizer.mvp.presenter.SearchPresenter
@@ -27,6 +28,7 @@ import com.example.root.kotlin_eyepetizer.utils.StatusBarUtil
 import com.example.root.kotlin_eyepetizer.utils.ViewAnimUtils
 import com.google.android.flexbox.*
 import kotlinx.android.synthetic.main.activity_search.*
+import java.util.*
 
 /**
  *  author:Jiwenjie

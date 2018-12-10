@@ -1,6 +1,6 @@
 package com.example.root.kotlin_eyepetizer.mvp.presenter
 
-import com.example.baselibrary.utils.ExceptionHandle
+import com.example.baselibrary.baseutils.ExceptionHandle
 import com.example.baselibrary.views.BaseMvpPresenter
 import com.example.root.kotlin_eyepetizer.mvp.contract.SearchContract
 import com.example.root.kotlin_eyepetizer.mvp.model.SearchModel

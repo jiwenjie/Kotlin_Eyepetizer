@@ -2,7 +2,7 @@ package com.example.root.kotlin_eyepetizer.ui.adapter
 
 import android.content.Context
 import android.view.View
-import com.example.baselibrary.adapter.BaseRecyclerAdapter
+import com.example.baselibrary.baseadapters.BaseRecyclerAdapter
 import com.example.root.kotlin_eyepetizer.R
 import com.google.android.flexbox.FlexboxLayoutManager
 import kotlinx.android.synthetic.main.item_flow_text.view.*

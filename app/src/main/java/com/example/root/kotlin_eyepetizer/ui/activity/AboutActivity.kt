@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.root.kotlin_eyepetizer.App
 import com.example.root.kotlin_eyepetizer.R
-import com.example.baselibrary.utils.AppUtils
+import com.example.baselibrary.baseutils.AppUtils
 import com.example.root.kotlin_eyepetizer.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_about.*
 
@@ -31,7 +31,7 @@ class AboutActivity : AppCompatActivity() {
        */
       StatusBarUtil.darkMode(this)
       StatusBarUtil.setPaddingSmart(this, about_toolbar)
-      about_tv_appName.text = "V${AppUtils.getVerName(App.INSTANCE!!.applicationContext)}"
+      about_tv_appName.text = "V${AppUtils.getAppVersionName(App.INSTANCE!!.applicationContext)}"
       // 返回
       about_toolbar.setNavigationOnClickListener {
          finish()
