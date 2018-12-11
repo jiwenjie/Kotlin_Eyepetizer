@@ -18,7 +18,7 @@ import io.reactivex.Observable
 class CategoryModel : CategoryContract.CategoryModel {
 
    override fun getCategoryData(): Observable<ArrayList<CategoryBean>> {
-      return RetrofitManager.provideClient(Constant.BASE_URL)
+      return RetrofitManager.provideClient(Constant.EYE_BASE_URL)
               .create(ApiService::class.java)
               .getCategory()
               .compose(SchedulerUtils.ioToMain())

@@ -21,7 +21,7 @@ class SearchModel : SearchContract.SearchModel {
     * 请求热门关键词的数据
     */
    override fun requestHotWordData(): Observable<ArrayList<String>> {
-      return RetrofitManager.provideClient(Constant.BASE_URL)
+      return RetrofitManager.provideClient(Constant.EYE_BASE_URL)
               .create(ApiService::class.java)
               .getHotWord()
               .compose(SchedulerUtils.ioToMain())
@@ -31,7 +31,7 @@ class SearchModel : SearchContract.SearchModel {
     * 搜索关键词返回的结果
     */
    override fun getSearchResult(words: String): Observable<HomeBean.Issue> {
-      return RetrofitManager.provideClient(Constant.BASE_URL)
+      return RetrofitManager.provideClient(Constant.EYE_BASE_URL)
               .create(ApiService::class.java)
               .getSearchData(words)
               .compose(SchedulerUtils.ioToMain())
@@ -41,7 +41,7 @@ class SearchModel : SearchContract.SearchModel {
     * 加载更多
     */
    override fun loadMore(url: String): Observable<HomeBean.Issue> {
-      return RetrofitManager.provideClient(Constant.BASE_URL)
+      return RetrofitManager.provideClient(Constant.EYE_BASE_URL)
               .create(ApiService::class.java)
               .getIssueData(url)
               .compose(SchedulerUtils.ioToMain())

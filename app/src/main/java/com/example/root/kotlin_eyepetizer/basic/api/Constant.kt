@@ -8,7 +8,13 @@ package com.example.root.kotlin_eyepetizer.basic.api
  *  version:1.0
  */
 object Constant {
-    const val BASE_URL = "http://baobab.kaiyanapp.com/api/"
+
+    const val ZHIHU_BASE_URL = "http://news-at.zhihu.com/"   // 知乎接口的 host 地址
+    const val DOUBAN_BASE_URL = "Https://api.douban.com/"   // 豆瓣接口的 host 地址
+    const val WEIXIN_BASE_URL = "http://v.juhe.cn/"         // 微信精选的 host 地址
+    const val WANGYI_BASE_URL = "http://c.m.163.com/"       // 网易新闻的 host 地址
+
+    const val EYE_BASE_URL = "http://baobab.kaiyanapp.com/api/"
     const val GitHub_URL = "https://github.com/jiwenjie/Kotlin_Eyepetizer"
 
     val BUNDLE_VIDEO_DATA = "video_data"

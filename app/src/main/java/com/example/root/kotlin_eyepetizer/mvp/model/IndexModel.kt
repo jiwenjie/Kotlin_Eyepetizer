@@ -18,14 +18,14 @@ import io.reactivex.Observable
 class IndexModel : IndexContract.IndexModel {
 
     override fun requestHomeData(num: Int): Observable<HomeBean> {
-        return RetrofitManager.provideClient(Constant.BASE_URL)
+        return RetrofitManager.provideClient(Constant.EYE_BASE_URL)
             .create(ApiService::class.java)
             .getFirstIndexData(num)
             .compose(SchedulerUtils.ioToMain())
     }
 
     override fun loadMord(url: String): Observable<HomeBean> {
-        return RetrofitManager.provideClient(Constant.BASE_URL)
+        return RetrofitManager.provideClient(Constant.EYE_BASE_URL)
             .create(ApiService::class.java)
             .getMoreIndexData(url)
             .compose(SchedulerUtils.ioToMain())

@@ -41,6 +41,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //noinspection GradleDependency
     api "androidx.core:core-ktx:$KTX_VERSION"
     api "com.android.support:appcompat-v7:$SUPPORT_LIBS_VERSION"
     api "com.android.support:design:$SUPPORT_LIBS_VERSION"
@@ -53,6 +54,7 @@ dependencies {
     api "com.scwang.smartrefresh:SmartRefreshLayout:$SMART_REFRESH_VERSION"
     api "com.google.code.gson:gson:$GSON_VERSION"
     api "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
+    //noinspection GradleDependency
     api "io.reactivex.rxjava2:rxandroid:$RX_ANDROID_VERSION"
     api "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
     api "com.squareup.retrofit2:converter-gson:$RETROFIT_CONVERTER_VERSION"

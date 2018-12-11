@@ -22,7 +22,7 @@ class RankModel : RankContract.RankModel {
     */
    override fun requestRankList(apiUrl: String): Observable<HomeBean.Issue> {
       return RetrofitManager
-              .provideClient(Constant.BASE_URL)
+              .provideClient(Constant.EYE_BASE_URL)
               .create(ApiService::class.java)
               .getIssueData(apiUrl)
               .compose(SchedulerUtils.ioToMain())

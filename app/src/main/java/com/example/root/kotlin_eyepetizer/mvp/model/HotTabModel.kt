@@ -21,7 +21,7 @@ class HotTabModel : HotContract.HotModel {
     * 获取 TabInfo
     */
    override fun getTabInfo(): Observable<TabInfoBean> {
-      return RetrofitManager.provideClient(Constant.BASE_URL)
+      return RetrofitManager.provideClient(Constant.EYE_BASE_URL)
               .create(ApiService::class.java)
               .getRankList()
               .compose(SchedulerUtils.ioToMain())

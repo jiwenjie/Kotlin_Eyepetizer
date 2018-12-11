@@ -18,7 +18,7 @@ import io.reactivex.Observable
 class FollowModel : FollowContract.FollowModel {
 
    override fun requestFollowList(): Observable<HomeBean.Issue> {
-       return RetrofitManager.provideClient(Constant.BASE_URL)
+       return RetrofitManager.provideClient(Constant.EYE_BASE_URL)
               .create(ApiService::class.java)
               .getFollowInfo()
               .compose(SchedulerUtils.ioToMain())
@@ -26,7 +26,7 @@ class FollowModel : FollowContract.FollowModel {
    }
 
    override fun loadMoreData(url: String): Observable<HomeBean.Issue> {
-        return RetrofitManager.provideClient(Constant.BASE_URL)
+        return RetrofitManager.provideClient(Constant.EYE_BASE_URL)
                 .create(ApiService::class.java)
                 .getIssueData(url)
                 .compose(SchedulerUtils.ioToMain())

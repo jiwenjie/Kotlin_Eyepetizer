@@ -21,14 +21,14 @@ class CategoryDetailListModel : CategoryDetailContract.CategoryDetailModel {
      * 获取分类下的 List 数据
      */
     override fun getCategoryDetailList(id: Long): Observable<HomeBean.Issue> {
-        return RetrofitManager.provideClient(Constant.BASE_URL)
+        return RetrofitManager.provideClient(Constant.EYE_BASE_URL)
             .create(ApiService::class.java)
             .getCategoryDetailList(id)
             .compose(SchedulerUtils.ioToMain())
     }
 
     override fun loadMoreData(url: String): Observable<HomeBean.Issue> {
-        return RetrofitManager.provideClient(Constant.BASE_URL)
+        return RetrofitManager.provideClient(Constant.EYE_BASE_URL)
             .create(ApiService::class.java)
             .getIssueData(url)
             .compose(SchedulerUtils.ioToMain())
