@@ -5,10 +5,12 @@ import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import com.example.root.kotlin_eyepetizer.ui.activity.MainActivity
+import com.example.root.kotlin_eyepetizer.utils.SchedulerUtils
+import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_splash.*
+import java.util.concurrent.TimeUnit
 
 /**
  *  author:Jiwenjie
@@ -46,11 +48,28 @@ class SplashActivity : AppCompatActivity() {
         animationSet.duration = 2400
         animationSet.start()
 
-        Handler().postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-            overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
-        }, 4000)
+        gotoMainActivity()  // Observable 实现倒计时跳转主页
+    }
+
+    @SuppressLint("CheckResult", "PrivateResource")
+    private fun gotoMainActivity() {
+        Observable.timer(4, TimeUnit.SECONDS)
+            .compose(SchedulerUtils.ioToMain())
+            .subscribe {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+                overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
+            }
     }
 }
+
+
+
+
+
+
+
+
+
+
+

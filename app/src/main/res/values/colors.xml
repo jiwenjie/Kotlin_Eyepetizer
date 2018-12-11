@@ -47,4 +47,6 @@
 
     <color name="color_light_black">#5000</color>
 
+    <color name="md_grey_700">#616161</color>
+
 </resources>

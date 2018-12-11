@@ -11,7 +11,6 @@ import io.reactivex.internal.functions.Functions
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 import java.util.*
-import java.util.function.Consumer
 
 /**
  *  author:Jiwenjie

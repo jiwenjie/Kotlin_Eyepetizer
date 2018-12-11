@@ -90,7 +90,7 @@
 
         <!--更多功能-->
         <activity
-            android:name=".ui.activity.MoreFunctionActivity"
+            android:name=".ui.activity.more_activity.MoreFunctionActivity"
             android:screenOrientation="portrait" />
 
     </application>

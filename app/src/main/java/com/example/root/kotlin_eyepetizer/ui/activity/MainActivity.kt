@@ -84,29 +84,25 @@ class MainActivity : BaseAppMvpActivity() {
       when (position) {
          0 // 首页
          -> mHomeFragment?.let {
-            transaction.show(it)
-         } ?: IndexFragment.getInstance(mTitles[position]).let {
+            transaction.show(it) } ?: IndexFragment.getInstance(mTitles[position]).let {
             mHomeFragment = it
             transaction.add(R.id.fl_main, it, "home")
          }
          1  //发现
          -> mDiscoveryFragment?.let {
-            transaction.show(it)
-         } ?: DiscoveryFragment.getInstance(mTitles[position]).let {
+            transaction.show(it) } ?: DiscoveryFragment.getInstance(mTitles[position]).let {
             mDiscoveryFragment = it
             transaction.add(R.id.fl_main, it, "discovery")
          }
          2  //热门
          -> mHotFragment?.let {
-            transaction.show(it)
-         } ?: HotFragment.getInstance(mTitles[position]).let {
+            transaction.show(it) } ?: HotFragment.getInstance(mTitles[position]).let {
             mHotFragment = it
             transaction.add(R.id.fl_main, it, "hot")
          }
          3 //我的
          -> mMineFragment?.let {
-            transaction.show(it)
-         } ?: MineFragment.getInstance(mTitles[position]).let {
+            transaction.show(it) } ?: MineFragment.getInstance(mTitles[position]).let {
             mMineFragment = it
             transaction.add(R.id.fl_main, it, "mine")
          }

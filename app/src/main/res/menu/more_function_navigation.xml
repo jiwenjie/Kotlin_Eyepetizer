@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/menu_item_pick_over"
+        android:icon="@drawable/ic_vector_bottom_pick_over"
+        android:title="文章"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/menu_item_movie"
+        android:icon="@drawable/ic_vector_bottom_movie"
+        android:title="影视"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/menu_item_book"
+        android:icon="@drawable/ic_vector_bottom_book"
+        android:title="书籍"
+        tools:ignore="HardcodedText" />
+
+</menu>

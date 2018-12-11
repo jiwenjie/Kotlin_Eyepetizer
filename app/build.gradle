@@ -17,6 +17,7 @@ android {
         // 实现毛玻璃那种透明的效果需要添加的库
         renderscriptTargetApi 19
         renderscriptSupportModeEnabled true    // Enable RS support
+        vectorDrawables.useSupportLibrary = true    // 设置矢量图形可用
 
         ndk {
             //APP的build.gradle设置支持的SO库架构
