@@ -57,7 +57,7 @@ class MainActivity : BaseAppMvpActivity() {
    //初始化底部菜单
    private fun initTab() {
       (0 until mTitles.size)
-              .mapTo(mTabEntities) {
+              .mapTo(destination = mTabEntities) {
                  TabEntity(mTitles[it], mIconSelectIds[it], mIconUnSelectIds[it])
               }
       //为Tab赋值

@@ -33,7 +33,7 @@ public abstract class BaseMvpActivity<V extends BaseMvpViewImpl, P extends BaseM
    private PermissionListener permissionListener;
    protected P mPresenter;
    /** 点击重试的监听 **/
-   protected View.OnClickListener listener;
+//   protected View.OnClickListener listener;
 
    @TargetApi(21)
    @Override
@@ -59,7 +59,7 @@ public abstract class BaseMvpActivity<V extends BaseMvpViewImpl, P extends BaseM
       /* 注册 lifecycle */
       if (mPresenter != null) getLifecycle().addObserver(mPresenter);
       initActivity(savedInstanceState);
-      if (mLayoutStatusView != null) mLayoutStatusView.setOnClickListener(listener = view -> loadData());
+      if (mLayoutStatusView != null) mLayoutStatusView.setOnRetryClickListener(v -> loadData());
       loadData();
       setListener();
    }

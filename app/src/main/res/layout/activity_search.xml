@@ -7,24 +7,14 @@
     android:layout_height="match_parent"
     android:background="@color/color_translucent">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_circle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:backgroundTint="@color/backgroundColor"
-        android:transitionName="@string/search_transition_name"
-        app:elevation="0dp"
-        app:fabSize="normal"
-        tools:targetApi="lollipop" />
+
 
     <LinearLayout
         android:id="@+id/rel_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgroundColor"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"

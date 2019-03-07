@@ -11,7 +11,7 @@ import com.example.root.kotlin_eyepetizer.basic.base.IBaseView
 import com.example.root.kotlin_eyepetizer.ui.activity.AboutActivity
 import com.example.root.kotlin_eyepetizer.ui.activity.ProfileHomePageActivity
 import com.example.root.kotlin_eyepetizer.ui.activity.WatchHistoryActivity
-import com.example.root.kotlin_eyepetizer.ui.activity.more_activity.MoreFunctionActivity
+import com.example.root.kotlin_eyepetizer.ui.more_function_ui.more_activity.MoreFunctionActivity
 import com.example.root.kotlin_eyepetizer.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.fragment_mine.*
 

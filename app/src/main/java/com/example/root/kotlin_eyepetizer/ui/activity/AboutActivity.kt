@@ -4,10 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import com.example.baselibrary.baseutils.AppUtils
+import com.example.baselibrary.views.BaseMvpActivity
+import com.example.baselibrary.views.BaseMvpPresenter
+import com.example.baselibrary.views.BaseMvpViewImpl
 import com.example.root.kotlin_eyepetizer.App
 import com.example.root.kotlin_eyepetizer.R
-import com.example.baselibrary.baseutils.AppUtils
 import com.example.root.kotlin_eyepetizer.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_about.*
 
@@ -18,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_about.*
  *  desc:
  *  version:1.0
  */
-class AboutActivity : AppCompatActivity() {
+class AboutActivity : BaseMvpActivity<BaseMvpViewImpl, BaseMvpPresenter<BaseMvpViewImpl>>() {
 
    @SuppressLint("SetTextI18n", "PrivateResource")
    override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +45,22 @@ class AboutActivity : AppCompatActivity() {
          val intent = Intent(Intent.ACTION_VIEW, uri)
          startActivity(intent)
       }
+   }
+
+   override fun getLayoutId(): Int {
+      TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+   }
+
+   override fun initActivity(savedInstanceState: Bundle?) {
+      TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+   }
+
+   override fun initPresenter(): BaseMvpPresenter<BaseMvpViewImpl>? {
+      return null
+   }
+
+   override fun loadData() {
+      TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
    }
 }
 

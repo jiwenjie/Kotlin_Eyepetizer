@@ -1,5 +1,6 @@
 package com.example.root.kotlin_eyepetizer.basic.api
 
+import com.example.root.kotlin_eyepetizer.mvp.more_mvp.more_function_bean.ZhihuDailyDetailBean
 import com.example.root.kotlin_eyepetizer.mvp.more_mvp.more_function_bean.ZhihuDailyListBean
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -18,10 +19,10 @@ interface ZhihuApi {
    fun getLastDailyList(): Observable<ZhihuDailyListBean>
 
    @GET("/api/4/news/before/{date}")
-   fun getDailyListWithDate(@Path("date") date: String)
+   fun getDailyListWithDate(@Path("date") date: String): Observable<ZhihuDailyListBean>
 
    @GET("/api/4/news/{id}")
-   fun getZhihuDailyDetail(@Path("id") id: String)
+   fun getZhihuDailyDetail(@Path("id") id: String): Observable<ZhihuDailyDetailBean>
 
 }
 

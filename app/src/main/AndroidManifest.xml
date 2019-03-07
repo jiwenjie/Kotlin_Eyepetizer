@@ -90,7 +90,7 @@
 
         <!--更多功能-->
         <activity
-            android:name=".ui.activity.more_activity.MoreFunctionActivity"
+            android:name="com.example.root.kotlin_eyepetizer.ui.more_function_ui.more_activity.MoreFunctionActivity"
             android:screenOrientation="portrait" />
 
     </application>

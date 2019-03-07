@@ -1,5 +1,7 @@
 package com.example.root.kotlin_eyepetizer.basic.api
 
+import com.example.root.kotlin_eyepetizer.mvp.more_mvp.more_function_bean.BookDetailBean
+import com.example.root.kotlin_eyepetizer.mvp.more_mvp.more_function_bean.BookListBean
 import com.example.root.kotlin_eyepetizer.mvp.more_mvp.more_function_bean.HotMovieBean
 import com.example.root.kotlin_eyepetizer.mvp.more_mvp.more_function_bean.MovieDetailBean
 import io.reactivex.Observable
@@ -34,7 +36,7 @@ interface DoubanApi {
     * count 一次请求的数目，如 "10" 条，最多 100
     */
    @GET("v2/movie/top250")
-   fun getMovieTop250(@Query("start") start: Int, @Query("count") count: Int)
+   fun getMovieTop250(@Query("start") start: Int, @Query("count") count: Int): Observable<HotMovieBean>
 
    /**
     * 根据 tag 获取图书
@@ -44,9 +46,9 @@ interface DoubanApi {
     */
    @GET("v2/book/search")
    fun getBookListWithTag(@Query("tag") tag: String, @Query("start") start: Int,
-                          @Query("count") count: Int)
+                          @Query("count") count: Int): Observable<BookListBean>
 
    @GET("v2/book/{id}")
-   fun getBookDetail(@Path("id") id: String)
+   fun getBookDetail(@Path("id") id: String): Observable<BookDetailBean>
 }
 
